@@ -62,7 +62,7 @@
                           <td>Semester 7</td>
                           <td>081263478512</td>
                           <td>
-                            <button class="btn btn-sm btn-primary">Input Matkul</button>
+                            <a href="{{ route('pengurus.inputmatkul.create') }}" class="btn btn-sm btn-primary">Input Matkul</a>
                           </td>
                         </tr>
                         <tr>

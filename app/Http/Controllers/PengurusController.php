@@ -54,9 +54,9 @@ class PengurusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function inputProgram()
     {
-        //
+        return view('pengurus.input_program');
     }
 
     /**

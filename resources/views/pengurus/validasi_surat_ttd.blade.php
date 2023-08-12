@@ -13,12 +13,15 @@
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                <li class="breadcrumb-item active" aria-current="page">Validasi SPTJM</li>
               </ol>
             </nav>
 
             <div class="pb-3">
-              <h1>Dashboard</h1>
+              <h1>Validasi SPTJM </h1>
+              <dd>Untuk validasi SPTJM mohon dicek kembali persyaratan surat-suratnya harus lengkap, 
+                jika tidak lengkap maka harus dilengkapi sesuai dengan persyaratan yang ada
+              </dd>
             </div>
 
             <div class="row">
@@ -37,11 +40,13 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <th scope="col">First Name</th>
-                          <th scope="col">Last Name</th>
-                          <th scope="col">Username</th>
-                          <th scope="col">Roles</th>
-                          <th scope="col">Actions</th>
+                          <th scope="col">NPM</th>
+                          <th scope="col">Nama Lengkap</th>
+                          <th scope="col">Kelas</th>
+                          <th scope="col">Prodi</th>
+                          <th scope="col">No. Telepon</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -52,34 +57,17 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
+                          <td>13119986</td>
+                          <td>M. Alamsyah Putra Zatmiko</td>
+                          <td>4KA24</td>
+                          <td>Sistem Informasi</td>
+                          <td>081263478512</td>
                           <td>
-                            <span class="badge badge-pill badge-primary">Admin</span>
+                            <span class="badge badge-pill badge-primary">Tervalidasi Prodi</span>
                           </td>
                           <td>
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <label class="custom-control custom-checkbox m-0 p-0">
-                              <input type="checkbox" class="custom-control-input table-select-row">
-                              <span class="custom-control-indicator"></span>
-                            </label>
-                          </th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>
-                            <span class="badge badge-pill badge-primary">Author</span>
-                            <span class="badge badge-pill badge-primary">Developer</span>
-                          </td>
-                          <td>
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <button class="btn btn-sm btn-primary">Validasi</button>
+                            <button class="btn btn-sm btn-danger">Tolak</button>
                           </td>
                         </tr>
                         <tr>
@@ -89,16 +77,6 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                          <td>
-                            <span class="badge badge-pill badge-danger">Inactive</span>
-                          </td>
-                          <td>
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                          </td>
                         </tr>
                       </tbody>
                     </table>

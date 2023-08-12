@@ -48,7 +48,7 @@
                     Vp
                   </span>
                   <span class="sidebar-nav-name">
-                    Validasi Pendaftaran Pengurus
+                    Validasi Pendaftaran
                   </span>
                 </a>
               </li>
@@ -56,10 +56,32 @@
               <li class="sidebar-nav-item">
                 <a href="{{route('pengurus_surat_ttd')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
-                    Vt
+                    Vs
                   </span>
                   <span class="sidebar-nav-name">
-                  Validasi Surat Tanda Tangan
+                    Validasi SPTJM
+                  </span>
+                </a>
+              </li>
+
+              <li class="sidebar-nav-item">
+                <a href="{{route('pengurus_input_matkul')}}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Im
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Input Matkul
+                  </span>
+                </a>
+              </li>
+
+              <li class="sidebar-nav-item">
+                <a href="{{route('pengurus_upload_nilai_perkuliahan')}}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Np
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Upload Nilai Perkuliahan
                   </span>
                 </a>
               </li>

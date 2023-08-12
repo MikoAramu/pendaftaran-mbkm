@@ -32,9 +32,9 @@ class PengurusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function uploadNilaiPerkuliahan()
     {
-        //
+        return view('pengurus.upload_nilai_perkuliahan');
     }
 
     /**
@@ -43,9 +43,9 @@ class PengurusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function inputMatkul()
     {
-        //
+        return view('pengurus.input_matkul');
     }
 
     /**

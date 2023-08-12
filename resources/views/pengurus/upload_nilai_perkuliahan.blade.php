@@ -13,15 +13,13 @@
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Validasi Pendaftaran</li>
+                <li class="breadcrumb-item active" aria-current="page">Upload Nilai Perkuliahan</li>
               </ol>
             </nav>
 
             <div class="pb-3">
-              <h1>Validasi Pendaftaran</h1>
-              <dd>Untuk validasi pendaftaran mohon dicek kembali persyaratan surat-suratnya harus lengkap, 
-                jika tidak lengkap maka harus dilengkapi sesuai dengan persyaratan yang ada
-              </dd>
+              <h1>Upload Nilai Perkuliahan </h1>
+              <dd>Upload Nilai Perkuliahan Mahasiswa harus sesuai Prodi & Semester yang diikuti</dd>
             </div>
 
             <div class="row">
@@ -44,8 +42,8 @@
                           <th scope="col">Nama Lengkap</th>
                           <th scope="col">Kelas</th>
                           <th scope="col">Prodi</th>
+                          <th scope="col">Semester</th>
                           <th scope="col">No. Telepon</th>
-                          <th scope="col">Status</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -61,13 +59,10 @@
                           <td>M. Alamsyah Putra Zatmiko</td>
                           <td>4KA24</td>
                           <td>Sistem Informasi</td>
+                          <td>Semester 7</td>
                           <td>081263478512</td>
                           <td>
-                            <span class="badge badge-pill badge-primary">Tervalidasi Prodi</span>
-                          </td>
-                          <td>
-                            <button class="btn btn-sm btn-primary">Validasi</button>
-                            <button class="btn btn-sm btn-danger">Tolak</button>
+                            <button class="btn btn-sm btn-primary">Upload Nilai</button>
                           </td>
                         </tr>
                         <tr>

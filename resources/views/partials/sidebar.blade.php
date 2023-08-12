@@ -76,6 +76,17 @@
               </li>
 
               <li class="sidebar-nav-item">
+                <a href="{{route('pengurus_input_program')}}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Ip
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Input Program
+                  </span>
+                </a>
+              </li>
+
+              <li class="sidebar-nav-item">
                 <a href="{{route('pengurus_upload_nilai_perkuliahan')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     Np

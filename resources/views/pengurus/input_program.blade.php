@@ -13,15 +13,13 @@
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Validasi SPTJM</li>
+                <li class="breadcrumb-item active" aria-current="page">Upload Nilai Perkuliahan</li>
               </ol>
             </nav>
 
             <div class="pb-3">
-              <h1>Validasi SPTJM </h1>
-              <dd>Untuk validasi SPTJM mohon dicek kembali persyaratan surat-suratnya harus lengkap, 
-                jika tidak lengkap maka harus dilengkapi sesuai dengan persyaratan yang ada
-              </dd>
+              <h1>Input Program Kampus Merdeka </h1>
+              <dd>Input Program Kampus Merdeka harus sesuai dengan batch tahun ini</dd>
             </div>
 
             <div class="row">
@@ -40,12 +38,8 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <th scope="col">NPM</th>
-                          <th scope="col">Nama Lengkap</th>
-                          <th scope="col">Kelas</th>
-                          <th scope="col">Prodi</th>
-                          <th scope="col">No. Telepon</th>
-                          <th scope="col">Status</th>
+                          <th scope="col">Id</th>
+                          <th scope="col">Nama Program</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -57,17 +51,11 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>13119986</td>
-                          <td>M. Alamsyah Putra Zatmiko</td>
-                          <td>4KA24</td>
-                          <td>Sistem Informasi</td>
-                          <td>081263478512</td>
+                          <td>1</td>
+                          <td>Studi Independen</td>
                           <td>
-                            <span class="badge badge-pill badge-sm badge-success">Tervalidasi Prodi</span>
-                          </td>
-                          <td>
-                            <button class="btn btn-sm btn-primary">Validasi</button>
-                            <button class="btn btn-sm btn-danger">Tolak</button>
+                            <button class="btn btn-sm btn-primary">Edit</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
                           </td>
                         </tr>
                         <tr>

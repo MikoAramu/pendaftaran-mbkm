@@ -66,11 +66,21 @@ class PengurusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function uploadMatkul()
+    public function indexMatkul()
     {
-        return view('pengurus.inputmatkul.create');
+        return view('pengurus.inputmatkul.index');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function indexNilai()
+    {
+        return view('pengurus.uploadnilai.index');
+    }
     /**
      * Remove the specified resource from storage.
      *

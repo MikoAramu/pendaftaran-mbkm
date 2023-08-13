@@ -63,10 +63,11 @@
                           <td>Sistem Informasi</td>
                           <td>081263478512</td>
                           <td>
-                            <span class="badge badge-pill badge-sm badge-success">Tervalidasi Prodi</span>
+                            <span class="badge badge-pill badge-sm badge-warning">Menunggu Divalidasi</span>
                           </td>
                           <td>
-                            <button class="btn btn-sm btn-primary">Validasi</button>
+                            <button class="btn btn-sm btn-primary">Cek Surat</button>
+                            <button class="btn btn-sm btn-success">Validasi</button>
                             <button class="btn btn-sm btn-danger">Tolak</button>
                           </td>
                         </tr>

@@ -22,11 +22,22 @@
               <dd>Input Program Kampus Merdeka harus sesuai dengan batch tahun ini</dd>
             </div>
 
+            <div class="card-header">
+            <h3 class="card-title">
+                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Program &nbsp;
+                </button>
+                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#dropTable">
+                    <i class="nav-icon fas fa-minus-circle"></i> &nbsp; Hapus Semua Program &nbsp;
+                </button>
+            </h3>
+          </div>
+
             <div class="row">
             <div class="col">
                 <div class="card mb-grid">
                   <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="card-header-title">Table</div>
+                    <div class="card-header-title">Program</div>
                   </div>
                   <div class="table-responsive-md">
                     <table class="table table-actions table-striped table-hover mb-0">
@@ -54,8 +65,8 @@
                           <td>1</td>
                           <td>Studi Independen</td>
                           <td>
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <button class="btn btn-sm btn-primary">Sunting</button>
+                            <button class="btn btn-sm btn-danger">Hapus</button>
                           </td>
                         </tr>
                         <tr>

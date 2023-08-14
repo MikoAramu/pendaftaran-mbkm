@@ -66,7 +66,8 @@
                             <span class="badge badge-pill badge-sm badge-success">Tervalidasi Prodi</span>
                           </td>
                           <td>
-                            <button class="btn btn-sm btn-primary">Validasi</button>
+                            <button class="btn btn-sm btn-primary">Cek Data</button>
+                            <button class="btn btn-sm btn-success">Validasi</button>
                             <button class="btn btn-sm btn-danger">Tolak</button>
                           </td>
                         </tr>

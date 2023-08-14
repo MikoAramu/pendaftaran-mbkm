@@ -53,6 +53,7 @@
                             <li>rows 3 = Jumlah SKS</li>
                             <li>rows 4 = Prodi</li>
                             <li>rows 5 = Semester</li>
+                            <li>rows 6 = Keterangan</li>
                         </ul>
                     </div>
                 </div>
@@ -91,6 +92,7 @@
                           <th scope="col">Jumlah SKS</th>
                           <th scope="col">Prodi</th>
                           <th scope="col">Semester</th>
+                          <th scope="col">Keterangan</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -107,6 +109,7 @@
                           <td>2</td>
                           <td>Sistem Informasi</td>
                           <td>Semester 7</td>
+                          <td>Dapat dikonversi</td>
                           <td>
                             <a href="#" class="btn btn-sm btn-primary">Edit</a>
                             <a href="#" class="btn btn-sm btn-danger">Hapus</a>

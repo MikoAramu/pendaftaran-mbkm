@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Semester extends Model
+class Fakultas extends Model
 {
-    protected $table = 'semesters';
+    protected $table = 'fakultas';
 
     public function mahasiswa()
     {

@@ -20,13 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Pengurus
-Route::get('/pengurus-validasi', 'PengurusController@validasiPendaftaran')->name('pengurus_pendaftaran');
 Route::get('/pengurus-surat-ttd', 'PengurusController@validasiSuratTtd')->name('pengurus_surat_ttd');
-Route::get('/pengurus-upload-nilai-perkuliahan', 'PengurusController@uploadNilaiPerkuliahan')->name('pengurus_upload_nilai_perkuliahan');
 Route::get('/pengurus-input-matkul', 'PengurusController@inputMatkul')->name('pengurus_input_matkul');
-Route::get('/pengurus-input-matkul/inputmatkul', 'PengurusController@uploadMatkul')->name('pengurus.inputmatkul.create');
+Route::get('/pengurus-input-matkul/index', 'PengurusController@indexMatkul')->name('pengurus.inputmatkul.index');
 Route::get('/pengurus-input-program', 'PengurusController@inputProgram')->name('pengurus_input_program');
-
+Route::get('/pengurus-surat-pengakuan', 'PengurusController@validasiSuratpengakuan')->name('pengurus_surat_pengakuan');
+Route::get('/pengurus-upload-nilai-perkuliahan', 'PengurusController@uploadNilaiPerkuliahan')->name('pengurus_upload_nilai_perkuliahan');
+Route::get('/pengurus-upload-nilai-perkuliahan/index', 'PengurusController@indexNilai')->name('pengurus.uploadnilai.index');
 
 //Prodi
 Route::get('/prodi-validasi', 'ProdiController@validasiPendaftaran')->name('prodi_pendaftaran');

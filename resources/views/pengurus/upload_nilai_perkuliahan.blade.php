@@ -62,7 +62,8 @@
                           <td>Semester 7</td>
                           <td>081263478512</td>
                           <td>
-                            <button class="btn btn-sm btn-primary">Upload Nilai</button>
+                            <a href="{{ route('pengurus.uploadnilai.index') }}" class="btn btn-sm btn-primary">
+                            <i class="oi oi-folder"></i>&nbsp; Upload Nilai</a>
                           </td>
                         </tr>
                         <tr>

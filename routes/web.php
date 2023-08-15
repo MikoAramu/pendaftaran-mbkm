@@ -21,8 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Pengurus
 Route::get('/pengurus-surat-ttd', 'PengurusController@validasiSuratTtd')->name('pengurus_surat_ttd');
-Route::get('/pengurus-input-matkul', 'PengurusController@inputMatkul')->name('pengurus_input_matkul');
-Route::get('/pengurus-input-matkul/index', 'PengurusController@indexMatkul')->name('pengurus.inputmatkul.index');
 Route::get('/pengurus-input-program', 'PengurusController@inputProgram')->name('pengurus_input_program');
 Route::get('/pengurus-surat-pengakuan', 'PengurusController@validasiSuratpengakuan')->name('pengurus_surat_pengakuan');
 Route::get('/pengurus-upload-nilai-perkuliahan', 'PengurusController@uploadNilaiPerkuliahan')->name('pengurus_upload_nilai_perkuliahan');
@@ -30,6 +28,8 @@ Route::get('/pengurus-upload-nilai-perkuliahan/index', 'PengurusController@index
 
 //Prodi
 Route::get('/prodi-validasi', 'ProdiController@validasiPendaftaran')->name('prodi_pendaftaran');
+Route::get('/prodi-input-matkul', 'ProdiController@inputMatkul')->name('prodi_input_matkul');
+Route::get('/prodi-input-matkul/index', 'ProdiController@indexMatkul')->name('prodi.inputmatkul.index');
 
 //mahasiswa
 Route::get('/form-pendaftaran', 'MahasiswaController@formPendaftaran')->name('form_pendaftaran');

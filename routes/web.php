@@ -42,3 +42,5 @@ Route::get('/cetaksptjm', 'MahasiswaController@cetaksptjm')->name('cetaksptjm');
 Route::get('/dashboard-mahasiswa', 'MahasiswaController@dashboard')->name('dashboard_mahasiswa');
 
 Route::post('/update-sptjm', 'MahasiswaController@updateSPTJM')->name('updateSPTJM');
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

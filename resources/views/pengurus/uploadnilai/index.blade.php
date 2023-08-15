@@ -17,7 +17,31 @@
               </ol>
             </nav>
 
-            <div class="card-header">
+          <div class="card mb-grid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="link_gambar_mahasiswa.jpg" alt="Foto Mahasiswa" class="img-fluid">
+                        </div>
+                        <div class="col-md-8">
+                            <ul class="list-unstyled">
+                                <li><strong>Nama:</strong> M. Alamsyah Putra Zatmiko</li>
+                                <li><strong>Kelas:</strong> 4KA24</li>
+                                <li><strong>NPM:</strong> 13119986</li>
+                                <li><strong>Jenis Kelamin:</strong> Laki-laki</li>
+                                <li><strong>Program:</strong> Studi Independen</li>
+                                <li><strong>Bidang:</strong> UI/UX Design Mastery</li>
+                                <li><strong>Mitra:</strong> PT. Impactbyte Teknologi Informasi</li>
+                                <li><strong>No. Telepon:</strong> 081263478512</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-header">
             <h3 class="card-title">
                 <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target=".bd-example-modal-lg">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Masukkan Nilai Perkuliahan &nbsp;
@@ -31,7 +55,7 @@
                 </button>
             </h3>
           </div>
-
+        
             <div class="row">
             <div class="col">
                 <div class="card mb-grid">
@@ -94,7 +118,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

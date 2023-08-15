@@ -54,17 +54,6 @@
               </li>
 
               <li class="sidebar-nav-item">
-                <a href="{{route('pengurus_input_matkul')}}" class="sidebar-nav-link">
-                  <span class="sidebar-nav-abbr">
-                    Im
-                  </span>
-                  <span class="sidebar-nav-name">
-                    Input Matkul
-                  </span>
-                </a>
-              </li>
-
-              <li class="sidebar-nav-item">
                 <a href="{{route('pengurus_input_program')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     Ip
@@ -120,6 +109,17 @@
                   </span>
                   <span class="sidebar-nav-name">
                     Validasi Pendaftaran Prodi
+                  </span>
+                </a>
+              </li>
+
+              <li class="sidebar-nav-item">
+                <a href="{{route('prodi_input_matkul')}}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Im
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Input Matkul
                   </span>
                 </a>
               </li>

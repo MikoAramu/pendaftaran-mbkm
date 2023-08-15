@@ -32,20 +32,10 @@ class PengurusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function uploadNilaiPerkuliahan()
+    public function uploadNilaiPerkuliahan(Request $request)
     {
+        
         return view('pengurus.upload_nilai_perkuliahan');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function inputMatkul()
-    {
-        return view('pengurus.input_matkul');
     }
 
     /**
@@ -57,18 +47,6 @@ class PengurusController extends Controller
     public function inputProgram()
     {
         return view('pengurus.input_program');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function indexMatkul()
-    {
-        return view('pengurus.inputmatkul.index');
     }
 
     /**

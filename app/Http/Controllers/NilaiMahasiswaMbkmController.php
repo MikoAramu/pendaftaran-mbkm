@@ -3,41 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\NilaiMahasiswaMbkm;
 
-class ProdiController extends Controller
+class NilaiMahasiswaMbkmController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function validasiPendaftaran()
+   public function index()
     {
-        return view('prodi.validasi_pendaftaran');
+        $nilaiMahasiswaMbkm = NilaiMahasiswaMbkm::all();
+        return view('pengurus.index_nilai', compact('nilaiMahasiswaMbkm'));
     }
 
-    
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function inputMatkul()
+    public function upload(Request $request)
     {
-        return view('prodi.input_matkul');
-    }
+        // Validasi data
+        $request->validate([
+            'mahasiswa_id' => 'required',
+            'nilai_mbkm' => 'required',
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function indexMatkul()
-    {
-        return view('prodi.inputmatkul.index');
+        // Simpan data nilai mahasiswa MBKM
+        NilaiMahasiswaMbkm::create([
+            'paket_id' => $request->paket_id,
+            'mahasiswa_id' => $request->mahasiswa_id,
+            'nilai_mbkm' => $request->nilai_mbkm,
+            'file_laporan_akhir' => $request->file_laporan_akhir,
+        ]);
+
+        return redirect()->back()->with('success', 'Data nilai mahasiswa MBKM berhasil diunggah.');
     }
 
     /**

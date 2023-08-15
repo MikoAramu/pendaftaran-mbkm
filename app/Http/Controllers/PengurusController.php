@@ -11,9 +11,9 @@ class PengurusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function validasiPendaftaran()
+    public function validasiSuratpengakuan()
     {
-        return view('pengurus.validasi_pendaftaran');
+        return view('pengurus.validasi_surat_pengakuan');
     }
 
     /**

@@ -43,17 +43,6 @@
 
             <ul class="sidebar-sub-nav collapse" id="example">
               <li class="sidebar-nav-item">
-                <a href="{{route('pengurus_pendaftaran')}}" class="sidebar-nav-link">
-                  <span class="sidebar-nav-abbr">
-                    Vp
-                  </span>
-                  <span class="sidebar-nav-name">
-                    Validasi Pendaftaran
-                  </span>
-                </a>
-              </li>
-
-              <li class="sidebar-nav-item">
                 <a href="{{route('pengurus_surat_ttd')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     Vs
@@ -82,6 +71,17 @@
                   </span>
                   <span class="sidebar-nav-name">
                     Input Program
+                  </span>
+                </a>
+              </li>
+
+              <li class="sidebar-nav-item">
+                <a href="{{route('pengurus_surat_pengakuan')}}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    Vp
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Validasi Surat Pengakuan SKS
                   </span>
                 </a>
               </li>

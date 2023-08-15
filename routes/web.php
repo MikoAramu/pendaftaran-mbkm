@@ -20,7 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Pengurus
-Route::get('/pengurus-validasi', 'PengurusController@validasiPendaftaran')->name('pengurus_pendaftaran');
 Route::get('/pengurus-surat-ttd', 'PengurusController@validasiSuratTtd')->name('pengurus_surat_ttd');
 Route::get('/pengurus-input-matkul', 'PengurusController@inputMatkul')->name('pengurus_input_matkul');
 Route::get('/pengurus-input-matkul/index', 'PengurusController@indexMatkul')->name('pengurus.inputmatkul.index');

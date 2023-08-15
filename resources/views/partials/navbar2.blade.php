@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand justify-content-between fixed-top">
         <a class="navbar-brand mb-0 h1 d-none d-md-block" href="index.html">
-          <img src="{{asset('asset-folder')}}/demo/img/logo_gundar.png" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
-          {{-- AdminX --}}
+          <img src="{{asset('asset-folder')}}/demo/img/logo.png" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
+          AdminX
         </a>
 
-        {{-- <form class="form-inline form-quicksearch d-none d-md-block mx-auto">
+        <form class="form-inline form-quicksearch d-none d-md-block mx-auto">
           <div class="input-group">
             <div class="input-group-prepend">
               <div class="input-group-icon">
@@ -13,7 +13,7 @@
             </div>
             <input type="text" class="form-control" id="search" placeholder="Type to search...">
           </div>
-        </form> --}}
+        </form>
 
         <div class="d-flex flex-1 d-block d-md-none">
           <a href="#" class="sidebar-toggle ml-3">
@@ -22,7 +22,7 @@
         </div>
 
         <ul class="navbar-nav d-flex justify-content-end mr-2">
-          {{-- <!-- Notificatoins -->
+          <!-- Notificatoins -->
           <li class="nav-item dropdown d-flex align-items-center mr-2">
             <a class="nav-link nav-link-notifications" id="dropdownNotifications" data-toggle="dropdown" href="#">
               <i class="oi oi-bell display-inline-block align-middle"></i>
@@ -68,20 +68,19 @@
                 <a href="#"><small>View all notifications</small></a>
               </div>
             </div>
-          </li> --}}
+          </li>
           <!-- Notifications -->
           <li class="nav-item dropdown">
             <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
-              {{-- <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="d-inline-block align-top" alt=""> --}}
-              Hi, {{ Auth::user()->email }}
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="d-inline-block align-top" alt="">
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              {{-- <a class="dropdown-item" href="#">My Profile</a>
+              <a class="dropdown-item" href="#">My Profile</a>
               <a class="dropdown-item" href="#">My Tasks</a>
               <a class="dropdown-item" href="#">Settings</a>
-              <div class="dropdown-divider"></div> --}}
+              <div class="dropdown-divider"></div>
               <a class="dropdown-item text-danger" href="#">Sign out</a>
             </div>
           </li>
-        {{-- </ul> --}}
+        </ul>
       </nav>

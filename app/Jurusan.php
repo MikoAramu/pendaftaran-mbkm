@@ -4,12 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Semester extends Model
+class Jurusan extends Model
 {
-    protected $table = 'semesters';
+    protected $table = 'jurusan';
 
     public function mahasiswa()
     {
     return $this->hasMany(Mahasiswa::class);
     }
+
+    
 }

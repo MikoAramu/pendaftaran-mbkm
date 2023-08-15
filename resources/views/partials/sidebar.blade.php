@@ -152,6 +152,16 @@
 
             <ul class="sidebar-sub-nav collapse" id="navForms">
               <li class="sidebar-nav-item">
+
+                <a href="{{route('dashboard_mahasiswa')}}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    D
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Dashboard
+                  </span>
+                </a>
+
                 <a href="{{route('form_pendaftaran')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     FP
@@ -160,17 +170,25 @@
                     Form Pendaftaran
                   </span>
                 </a>
-              </li>
 
-              <li class="sidebar-nav-item">
-                <a href="./layouts/form_advanced.html" class="sidebar-nav-link">
+                <a href="{{route('surat_pengakuan_sks')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
-                    Ad
+                    KS
                   </span>
                   <span class="sidebar-nav-name">
-                    Advanced Elements
+                    Surat Pengakuan SKS
                   </span>
                 </a>
+
+                <a href="{{route('laporan_akhir_dan_nilai_total')}}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    FP
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Input Nilai & Laporan Akhir
+                  </span>
+                </a>
+
               </li>
             </ul>
           </li>

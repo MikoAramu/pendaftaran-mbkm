@@ -26,30 +26,13 @@
                   
                   <div class="card-body collapse show" id="card1">    
                     
-                    <h1>Pengumuman Pendaftaran</h1>              
-                <dd>Silahkan status pendaftaran anda secara berkala</dd>
-                <br><br>
-
-                @if ($mahasiswa)
-                    @if ($mahasiswa->status == 'Menunggu Validasi')
-                        <p><h3>Menunggu Validasi Prodi dan Pengurus</h3></p>
-                    @elseif ($mahasiswa->status == 'Tidak Lolos Validasi')
-                        <p><h3>Maaf, Anda tidak lolos validasi</h3></p>
-                    @elseif ($mahasiswa->status == 'Anda Tervalidasi Prodi')
-                        {{-- <p><h3>Selamat, Anda telah tervalidasi oleh Prodi</h3></p> --}}
-                        <p><h3>Selamat anda sudah tervalidasi Prodi tetapi anda masih harus menunggu validasi dari Pengurus</h3><br>
-                        Anda dapat melihat dan mencetak surat Rekomendasi <br> <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Cetak Surat Rekomendasi</a> </p>
-                        
-                    @elseif ($mahasiswa->status == 'Anda Tervalidasi Prodi dan Pengurus')
-                        {{-- <p><h3>Selamat, Anda telah tervalidasi oleh Prodi dan Pengurus</h3></p> --}}
-                        <p><h3>Selamat anda sudah tervalidasi Prodi dan Pengurus</h3><br>
-                        Anda dapat mendownload surat Rekomendasi <br> <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Cetak Surat Rekomendasi</a><br><br>
-                        Anda dapat mendownload SPTJM <br> <a href="{{ route('cetaksptjm') }}" class="btn btn-primary"> Cetak SPTJM</a></p><br><br>
+                <p><h3>Selamat anda sudah dapat melihat surat pengakuan SKS</h3><br>
+                        Anda dapat mendownload surat pengakuan SKS <br> <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Cetak Surat Pengakuan SKS</a><br><br>
 
                         <form action="{{ route('updateSPTJM') }}" method="POST" enctype="multipart/form-data">
                             @csrf                            
                             <div class="form-group">
-                            <label for="krs">Unggah File PDF SPTJM yang Telah Anda Tandatangani:</</label>
+                            <label for="krs">Unggah Surat Pengakuan SKS Telah Mahasiswa Tandatangani</label>
                             <input type="file" name="krs" accept=".pdf"
                                 class="form-control-file @error('krs') is-invalid @enderror"
                                 id="krs">
@@ -60,12 +43,8 @@
                             <button type="submit" class="btn btn-primary">Unggah</button>
                         </form>
 
-                    @else
-                        <p><h3>Status Pendaftaran tidak dikenali</h3></p>
-                    @endif
-                @else
-                    <p><h3>Anda belum mengajukan pendaftaran</h3></p>
-                @endif    
+                        <p><h3>Selamat surat pengakuan SKS anda sudah di tanda tangani pengurus</h3><br>
+                         Anda dapat mendownload surat pengakuan SKS yang sudah ditanda tangani pengurus <br> <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Cetak Surat Pengakuan SKS</a><br><br>
                      
                 </div>                
               </div>

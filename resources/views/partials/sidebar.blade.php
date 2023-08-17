@@ -171,7 +171,7 @@
                   </span>
                 </a>
 
-                <a href="{{route('surat_pengakuan_sks')}}" class="sidebar-nav-link">
+                <a href="{{route('form_surat_pengakuan_sks')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     KS
                   </span>

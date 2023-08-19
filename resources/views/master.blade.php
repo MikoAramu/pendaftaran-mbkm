@@ -3,6 +3,7 @@
 @php 
     $authenticateUser = App\User::where('id', Auth::id())->first();
 @endphp
+@include('sweetalert::alert')
 @include('partials.head')
 
 <body>

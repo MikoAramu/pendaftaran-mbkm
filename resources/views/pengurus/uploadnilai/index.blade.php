@@ -44,9 +44,9 @@
         <div class="card">
             <h3 class="card-title">
               &nbsp;
-                <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target=".bd-example-modal-lg">
+                <a href="{{ route('createNilai') }}" class="btn btn-sm btn-secondary">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Masukkan Nilai Perkuliahan &nbsp;
-                </button>
+                </a>
                 <a href="#" class="btn btn-sm btn-success" target="_blank"><i class="nav-icon fas fa-file-export"></i> &nbsp; Export Excel &nbsp;</a>
                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#importExcel">
                     <i class="nav-icon fas fa-file-import"></i> &nbsp; Import Excel &nbsp;

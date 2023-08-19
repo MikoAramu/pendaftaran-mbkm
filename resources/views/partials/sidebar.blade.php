@@ -1,6 +1,6 @@
 <div class="adminx-sidebar expand-hover push">
         <ul class="sidebar-nav">
-          <li class="sidebar-nav-item">
+          {{-- <li class="sidebar-nav-item">
             <a href="index.html" class="sidebar-nav-link active">
               <span class="sidebar-nav-icon">
                 <i data-feather="home"></i>
@@ -12,9 +12,9 @@
 
               </span>
             </a>
-          </li>
+          </li> --}}
 
-          <li class="sidebar-nav-item">
+          {{-- <li class="sidebar-nav-item">
             <a href="#" class="sidebar-nav-link">
               <span class="sidebar-nav-icon">
                 <i data-feather="layout"></i>
@@ -135,13 +135,16 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
 
           <li class="sidebar-nav-item">
             <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navForms" aria-expanded="false" aria-controls="navForms">
-              <span class="sidebar-nav-icon">
+              {{-- <span class="sidebar-nav-icon">
                 <i data-feather="edit"></i>
-              </span>
+              </span> --}}
+              <span class="sidebar-nav-abbr">
+                    M
+                  </span>
               <span class="sidebar-nav-name">
                 Mahasiswa
               </span>
@@ -173,7 +176,7 @@
 
                 <a href="{{route('form_surat_pengakuan_sks')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
-                    KS
+                    SPS
                   </span>
                   <span class="sidebar-nav-name">
                     Surat Pengakuan SKS
@@ -182,7 +185,7 @@
 
                 <a href="{{route('laporan_akhir_dan_nilai_total')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
-                    FP
+                    IL
                   </span>
                   <span class="sidebar-nav-name">
                     Input Nilai & Laporan Akhir
@@ -193,7 +196,7 @@
             </ul>
           </li>
 
-          <li class="sidebar-nav-item">
+          {{-- <li class="sidebar-nav-item">
             <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navUI" aria-expanded="false" aria-controls="navUI">
               <span class="sidebar-nav-icon">
                 <i data-feather="grid"></i>
@@ -340,7 +343,7 @@
                   </span>
                   <span class="sidebar-nav-name">
                     Invoice
-                  </span>
+                  </span> --}}
                 </a>
               </li>
             </ul>

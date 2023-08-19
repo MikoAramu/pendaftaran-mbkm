@@ -8,13 +8,13 @@
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard_mahasiswa')}}">Dashboard</a></li>                
-                <li class="breadcrumb-item active  aria-current=" page"="">Form Pendaftaran MBKM</li>
+                <li class="breadcrumb-item active  aria-current=" page"="">Form Surat Pengakuan SKS</li>
               </ol>
             </nav>
 
             <div class="pb-3">
-                <h1>Form Pendaftaran MBKM</h1>
-                <dd>Silahkan isi form tersebut dengan sebenar benarnya dan tidak di singkat singkat</dd>
+                <h1>Form Surat Pengakuan SKS</h1>
+                <dd>Silahkan isi form tersebut dengan sebenar benarnya sesuai dengan petunjuk</dd>
             </div>
             <div >
               <div>

@@ -13,20 +13,40 @@
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Input Matkul</li>
+                <li class="breadcrumb-item"><a href="#">Upload Mata Kuliah</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Index</li>
               </ol>
             </nav>
 
-            <div class="pb-3">
-              <h1>Input Mata Kuliah Mahasiswa </h1>
-              <dd>Input Mata Kuliah Mahasiswa harus sesuai Prodi & Semester yang diikuti</dd>
+            <div class="card mb-grid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="link_gambar_mahasiswa.jpg" alt="Foto Mahasiswa" class="img-fluid">
+                        </div>
+                        <div class="col-md-8">
+                            <ul class="list-unstyled">
+                                <li><strong>Nama:</strong> M. Alamsyah Putra Zatmiko</li>
+                                <li><strong>Kelas:</strong> 4KA24</li>
+                                <li><strong>NPM:</strong> 13119986</li>
+                                <li><strong>Jenis Kelamin:</strong> Laki-laki</li>
+                                <li><strong>Program:</strong> Studi Independen</li>
+                                <li><strong>Bidang:</strong> UI/UX Design Mastery</li>
+                                <li><strong>Mitra:</strong> PT. Impactbyte Teknologi Informasi</li>
+                                <li><strong>No. Telepon:</strong> 081263478512</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
             <div class="row">
             <div class="col">
                 <div class="card mb-grid">
                   <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="card-header-title">Mahasiswa</div>
+                    <div class="card-header-title">Mata Kuliah</div>
                   </div>
                   <div class="table-responsive-md">
                     <table class="table table-actions table-striped table-hover mb-0">
@@ -38,12 +58,12 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <th scope="col">NPM</th>
-                          <th scope="col">Nama Lengkap</th>
-                          <th scope="col">Kelas</th>
+                          <th scope="col">Kode Mata Kuliah</th>
+                          <th scope="col">Nama Mata Kuliah</th>
+                          <th scope="col">Jumlah SKS</th>
                           <th scope="col">Prodi</th>
                           <th scope="col">Semester</th>
-                          <th scope="col">No. Telepon</th>
+                          <th scope="col">Keterangan</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -55,15 +75,15 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>13119986</td>
-                          <td>M. Alamsyah Putra Zatmiko</td>
-                          <td>4KA24</td>
+                          <td>AK011326</td>
+                          <td>TESTING DAN IMPLEMENTASI SISTEM</td>
+                          <td>2</td>
                           <td>Sistem Informasi</td>
                           <td>Semester 7</td>
-                          <td>081263478512</td>
+                          <td>Dapat dikonversi</td>
                           <td>
-                            <a href="{{ route('pengurus.inputmatkul.index') }}" class="btn btn-sm btn-primary">
-                            <i class="oi oi-folder"></i>&nbsp; Masukkan Matkul</a>
+                            <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                           </td>
                         </tr>
                         <tr>

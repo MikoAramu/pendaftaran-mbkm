@@ -13,13 +13,17 @@
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Upload Mata Kuliah</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Index</li>
+                <li class="breadcrumb-item active" aria-current="page">Input Matkul</li>
               </ol>
             </nav>
 
-            <div class="card-header">
-            <h3 class="card-title">
+            <div class="pb-3">
+              <h1>Input Mata Kuliah Mahasiswa </h1>
+              <dd>Input Mata Kuliah Mahasiswa harus sesuai Prodi & Semester yang diikuti</dd>
+            </div>
+
+            <div class="card">
+            <h3 class="card-title">&nbsp;
                 <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target=".bd-example-modal-lg">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Mata Kuliah &nbsp;
                 </button>
@@ -75,7 +79,7 @@
             <div class="col">
                 <div class="card mb-grid">
                   <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="card-header-title">Mata Kuliah</div>
+                    <div class="card-header-title">Mahasiswa</div>
                   </div>
                   <div class="table-responsive-md">
                     <table class="table table-actions table-striped table-hover mb-0">
@@ -87,12 +91,12 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <th scope="col">Kode Mata Kuliah</th>
-                          <th scope="col">Nama Mata Kuliah</th>
-                          <th scope="col">Jumlah SKS</th>
+                          <th scope="col">NPM</th>
+                          <th scope="col">Nama Lengkap</th>
+                          <th scope="col">Kelas</th>
                           <th scope="col">Prodi</th>
                           <th scope="col">Semester</th>
-                          <th scope="col">Keterangan</th>
+                          <th scope="col">No. Telepon</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -104,15 +108,15 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>AK011326</td>
-                          <td>TESTING DAN IMPLEMENTASI SISTEM</td>
-                          <td>2</td>
+                          <td>13119986</td>
+                          <td>M. Alamsyah Putra Zatmiko</td>
+                          <td>4KA24</td>
                           <td>Sistem Informasi</td>
                           <td>Semester 7</td>
-                          <td>Dapat dikonversi</td>
+                          <td>081263478512</td>
                           <td>
-                            <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                            <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                            <a href="{{ route('prodi.inputmatkul.index') }}" class="btn btn-sm btn-primary">
+                            <i class="oi oi-folder"></i>&nbsp; Masukkan Matkul</a>
                           </td>
                         </tr>
                         <tr>

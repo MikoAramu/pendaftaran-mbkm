@@ -16,14 +16,28 @@ class ProdiController extends Controller
         return view('prodi.validasi_pendaftaran');
     }
 
+    
     /**
-     * Show the form for creating a new resource.
+     * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function inputMatkul()
     {
-        //
+        return view('prodi.input_matkul');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function indexMatkul()
+    {
+        return view('prodi.inputmatkul.index');
     }
 
     /**

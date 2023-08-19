@@ -13,7 +13,7 @@
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Upload Nilai Perkuliahan</li>
+                <li class="breadcrumb-item active" aria-current="page">Input Program MBKM</li>
               </ol>
             </nav>
 
@@ -24,9 +24,9 @@
 
             <div class="card-header">
             <h3 class="card-title">
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+                <a href="{{ route('createProgram') }}" class="btn btn-sm btn-primary">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Program &nbsp;
-                </button>
+                </a>
                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#dropTable">
                     <i class="nav-icon fas fa-minus-circle"></i> &nbsp; Hapus Semua Program &nbsp;
                 </button>
@@ -55,6 +55,7 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($dataProgram as $data)
                         <tr>
                           <th scope="row">
                             <label class="custom-control custom-checkbox m-0 p-0">
@@ -62,21 +63,14 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>1</td>
-                          <td>Studi Independen</td>
+                          <td>{{$data->id}}</td>
+                          <td>{{$data->nama_program}}</td>
                           <td>
-                            <button class="btn btn-sm btn-primary">Sunting</button>
-                            <button class="btn btn-sm btn-danger">Hapus</button>
+                            <a href="{{ route('editProgram', $data->id) }}" class="btn btn-sm btn-primary">Sunting</a>
+                            <a href="{{ route('deleteProgram', $data->id) }}" class="btn btn-sm btn-danger">Hapus</button>
                           </td>
                         </tr>
-                        <tr>
-                          <th scope="row">
-                            <label class="custom-control custom-checkbox m-0 p-0">
-                              <input type="checkbox" class="custom-control-input table-select-row">
-                              <span class="custom-control-indicator"></span>
-                            </label>
-                          </th>
-                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -86,7 +80,7 @@
 
           </div>
         </div>
-      </div>
+</div>
 
 
 @endsection

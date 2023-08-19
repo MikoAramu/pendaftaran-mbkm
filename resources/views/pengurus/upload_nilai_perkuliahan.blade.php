@@ -22,6 +22,14 @@
               <dd>Upload Nilai Perkuliahan Mahasiswa harus sesuai Prodi & Semester yang diikuti</dd>
             </div>
 
+            <div class="card-header">
+            <h3 class="card-title">
+                <a href="#" class="btn btn-sm btn-success">
+                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Konversi Nilai Semua Mahasiswa &nbsp;
+                </a>
+            </h3>
+          </div>
+
             <div class="row">
             <div class="col">
                 <div class="card mb-grid">
@@ -44,6 +52,7 @@
                           <th scope="col">Prodi</th>
                           <th scope="col">Semester</th>
                           <th scope="col">No. Telepon</th>
+                          <th scope="col">Nilai MBKM</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -61,6 +70,7 @@
                           <td>Sistem Informasi</td>
                           <td>Semester 7</td>
                           <td>081263478512</td>
+                          <td>90</td>
                           <td>
                             <a href="{{ route('pengurus.uploadnilai.index') }}" class="btn btn-sm btn-primary">
                             <i class="oi oi-folder"></i>&nbsp; Upload Nilai</a>

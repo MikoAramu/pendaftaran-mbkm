@@ -40,7 +40,7 @@
               </li>
 
               <li class="sidebar-nav-item">
-                <a href="{{route('pengurus_input_program')}}" class="sidebar-nav-link">
+                <a href="{{route('indexProgram')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     Ip
                   </span>

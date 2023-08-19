@@ -24,10 +24,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('pengurus')->middleware('role:pengurus')->group(function() {
     Route::get('/surat-ttd', 'PengurusController@validasiSuratTtd')->name('pengurus_surat_ttd');
-    Route::get('/input-program', 'PengurusController@inputProgram')->name('pengurus_input_program');
+    //Pengurus Bagian Program
+    Route::get('/input-program', 'PengurusController@index')->name('indexProgram');
+    Route::get('/create-program', 'PengurusController@createProgram')->name('createProgram');
+    Route::get('/edit-program/{id}', 'PengurusController@editProgram')->name('editProgram');
+    Route::post('/input-program', 'PengurusController@saveProgram')->name('saveProgram');
+    Route::post('/update-program', 'PengurusController@updateProgram')->name('updateProgram');
+    Route::get('/delete-program/{id}', 'PengurusController@deleteProgram')->name('deleteProgram');
     Route::get('/surat-pengakuan', 'PengurusController@validasiSuratpengakuan')->name('pengurus_surat_pengakuan');
+    //pengurus Bagian Nilai
     Route::get('/upload-nilai-perkuliahan', 'PengurusController@uploadNilaiPerkuliahan')->name('pengurus_upload_nilai_perkuliahan');
     Route::get('/upload-nilai-perkuliahan/index', 'PengurusController@indexNilai')->name('pengurus.uploadnilai.index');
+    Route::get('/upload-nilai-perkuliahan/create', 'PengurusController@createNilai')->name('createNilai');
 });
 
 //Prodi
@@ -47,7 +55,7 @@ Route::prefix('mahasiswa')->middleware('role:mahasiswa')->group(function() {
     Route::get('/cetaksuratrekomendasi', 'MahasiswaController@cetaksuratrekomendasi')->name('cetaksuratrekomendasi');
     Route::get('/cetaksptjm', 'MahasiswaController@cetaksptjm')->name('cetaksptjm');
     Route::get('/dashboard-mahasiswa', 'MahasiswaController@dashboard')->name('dashboard_mahasiswa');
-
+    //kodingan lu masukin disini
     Route::post('/update-sptjm', 'MahasiswaController@updateSPTJM')->name('updateSPTJM');
 });
 

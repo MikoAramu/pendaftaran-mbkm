@@ -3,16 +3,58 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mahasiswa;
 use App\NilaiMahasiswaMbkm;
+use App\User;
+
+use Illuminate\Support\Facades\Auth;
 
 class NilaiMahasiswaMbkmController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-   public function index()
+    public function inputLaporanAkhirDanNilaiTotal()
+    {
+        $mahasiswa_id = Auth::id(); // Mengambil data user yang sedang login
+
+        $NilaiMahasiswaMbkm = NilaiMahasiswaMbkm::where('mahasiswa_id', $mahasiswa_id)->first();
+
+        return view('mahasiswa.laporan_akhir_dan_nilai_total', [
+            'NilaiMahasiswaMbkm' => $NilaiMahasiswaMbkm,
+        ]);
+    }
+
+    public function simpanLaporanAkhirdanNilaiTotal(Request $request)
+    {
+        $request->validate([
+            'file_laporan_akhir' => 'required',
+            'nilai_mbkm' => 'required',
+        ], [
+            'file_laporan_akhir.required' => 'File Laporan Akhir belum diupload',
+            'nilai_mbkm.required' => 'IPK belum diisi',
+        ]);
+
+        $mahasiswa_id = auth()->user()->id;
+
+        if ($request->hasFile('file_laporan_akhir')) {
+            $file_laporan_akhir_file = $request->file('file_laporan_akhir');
+            $file_laporan_akhir_nama = $file_laporan_akhir_file->getClientOriginalName();
+            $file_laporan_akhirPath = $file_laporan_akhir_file->storeAs('public/file_laporan_akhir', $file_laporan_akhir_nama);
+        }
+
+        $data = [
+            'mahasiswa_id' => $mahasiswa_id,
+            'file_laporan_akhir' => $file_laporan_akhirPath ?? null,
+            'nilai_mbkm' => $request->input('nilai_mbkm'),
+        ];
+
+        $NilaiMahasiswaMbkm = NilaiMahasiswaMbkm::create($data);
+        $NilaiMahasiswaMbkm->save();
+
+        return redirect()->back()->with('success', 'Pendaftaran berhasil disimpan.');
+    }
+
+    // ... Potongan kode lainnya ...
+
+    public function index()
     {
         $nilaiMahasiswaMbkm = NilaiMahasiswaMbkm::all();
         return view('pengurus.index_nilai', compact('nilaiMahasiswaMbkm'));
@@ -26,7 +68,6 @@ class NilaiMahasiswaMbkmController extends Controller
             'nilai_mbkm' => 'required',
         ]);
 
-        // Simpan data nilai mahasiswa MBKM
         NilaiMahasiswaMbkm::create([
             'paket_id' => $request->paket_id,
             'mahasiswa_id' => $request->mahasiswa_id,
@@ -35,61 +76,5 @@ class NilaiMahasiswaMbkmController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Data nilai mahasiswa MBKM berhasil diunggah.');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

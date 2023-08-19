@@ -22,8 +22,8 @@
               <dd>Input Mata Kuliah Mahasiswa harus sesuai Prodi & Semester yang diikuti</dd>
             </div>
 
-            <div class="card-header">
-            <h3 class="card-title">
+            <div class="card">
+            <h3 class="card-title">&nbsp;
                 <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target=".bd-example-modal-lg">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Mata Kuliah &nbsp;
                 </button>

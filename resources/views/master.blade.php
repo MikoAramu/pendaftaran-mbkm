@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@php 
+    $authenticateUser = App\User::where('id', Auth::id())->first();
+@endphp
 @include('partials.head')
 
 <body>

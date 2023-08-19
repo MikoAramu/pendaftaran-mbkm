@@ -255,7 +255,12 @@ class MahasiswaController extends Controller
 
     public function suratPengakuanSKS()
     {
-        return view('mahasiswa.surat_pengakuan_sks');
+        return view('mahasiswa.form_surat_pengakuan_sks');
+    }
+
+    public function PengumumanSuratPengakuanSKS()
+    {
+        return view('mahasiswa.pengumuman_surat_pengakuan_sks');
     }
 
     public function la_dan_nt()

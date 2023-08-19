@@ -38,12 +38,6 @@
                       alt="Carousel Image"
                     />
                   </div>
-                  <div class="carousel-item">
-                    <img
-                      src="{{asset('asset-folder')}}/demo/img/gundar1.jpg"
-                      class="d-block w-100"
-                      alt="Carousel Image"
-                    />
                   </div>
                 </div>
               </div>

@@ -126,9 +126,12 @@
   @else
           <li class="sidebar-nav-item">
             <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navForms" aria-expanded="false" aria-controls="navForms">
-              <span class="sidebar-nav-icon">
+              {{-- <span class="sidebar-nav-icon">
                 <i data-feather="edit"></i>
-              </span>
+              </span> --}}
+              <span class="sidebar-nav-abbr">
+                    M
+                  </span>
               <span class="sidebar-nav-name">
                 Mahasiswa
               </span>
@@ -160,7 +163,7 @@
 
                 <a href="{{route('surat_pengakuan_sks')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
-                    KS
+                    SPS
                   </span>
                   <span class="sidebar-nav-name">
                     Surat Pengakuan SKS
@@ -169,7 +172,7 @@
 
                 <a href="{{route('laporan_akhir_dan_nilai_total')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
-                    FP
+                    IL
                   </span>
                   <span class="sidebar-nav-name">
                     Input Nilai & Laporan Akhir

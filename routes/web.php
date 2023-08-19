@@ -19,9 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Pengurus
-
-
+// Pengurus
 Route::prefix('pengurus')->middleware('role:pengurus')->group(function() {
     Route::get('/surat-ttd', 'PengurusController@validasiSuratTtd')->name('pengurus_surat_ttd');
     Route::get('/input-program', 'PengurusController@inputProgram')->name('pengurus_input_program');
@@ -30,7 +28,7 @@ Route::prefix('pengurus')->middleware('role:pengurus')->group(function() {
     Route::get('/upload-nilai-perkuliahan/index', 'PengurusController@indexNilai')->name('pengurus.uploadnilai.index');
 });
 
-//Prodi
+// Prodi
 Route::prefix('prodi')->middleware('role:prodi')->group(function() {
     Route::get('/validasi', 'ProdiController@validasiPendaftaran')->name('prodi_pendaftaran');
     Route::get('/input-matkul', 'ProdiController@inputMatkul')->name('prodi_input_matkul');
@@ -47,8 +45,8 @@ Route::prefix('mahasiswa')->middleware('role:mahasiswa')->group(function() {
     Route::get('/cetaksuratrekomendasi', 'MahasiswaController@cetaksuratrekomendasi')->name('cetaksuratrekomendasi');
     Route::get('/cetaksptjm', 'MahasiswaController@cetaksptjm')->name('cetaksptjm');
     Route::get('/dashboard-mahasiswa', 'MahasiswaController@dashboard')->name('dashboard_mahasiswa');
-
     Route::post('/update-sptjm', 'MahasiswaController@updateSPTJM')->name('updateSPTJM');
 });
 
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/laporan-akhir-dan-nilai-total', 'NilaiMahasiswaMbkmController@inputLaporanAkhirDanNilaiTotal')->name('laporan_akhir_dan_nilai_total');
+Route::post('/simpan-laporan-akhir-dan-nilai-total', 'NilaiMahasiswaMbkmController@simpanLaporanAkhirdanNilaiTotal')->name('simpan_laporan_akhir_dan_nilai_total');

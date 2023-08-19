@@ -14,16 +14,23 @@
 
             <div class="pb-3">
                 <h1>Laporan akhir dan nilai total</h1>
-                <dd>Silahkan input total nilai anda beserta laporan akhirnya</dd>
+                @if ($isRegisteredAndSubmitted)
+                    <dd>Selamat! Anda sudah menginput nilai dan mengunggah laporan akhir.</dd>
+                @elseif ($isRegistered)
+                    <dd>Anda harus menginputkan nilai dan mengunggah laporan akhir.</dd>
+                @else
+                    <dd>Anda harus mendaftar terlebih dahulu.</dd>
+                @endif
             </div>
-            <div >
-              <div>
+
+                @if (!$isRegisteredAndSubmitted)
+            <div>
                 <div class="card mb-grid">
-                  
-                  <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="card-header-title">Input Nilai Total dan Laporan Akhir</div>
-                  </div>                
-                  <div class="card-body collapse show" id="card1">                                                   
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="card-header-title">Input Nilai Total dan Laporan Akhir</div>
+                    </div>
+                    <div class="card-body collapse show" id="card1">
+                        @if ($isRegistered)                                                 
                      <form method="POST" action="{{ route('simpan_laporan_akhir_dan_nilai_total') }}" 
                     enctype="multipart/form-data">
                       @csrf
@@ -57,6 +64,10 @@
                                          
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    @else
+                            <p>Anda harus mendaftar terlebih dahulu.</p>
+                        @endif
+                        @endif
                 </div>                
               </div>
             </div>

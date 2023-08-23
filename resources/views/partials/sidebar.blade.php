@@ -62,7 +62,7 @@
               </li>
 
               <li class="sidebar-nav-item">
-                <a href="{{route('pengurus_upload_nilai_perkuliahan')}}" class="sidebar-nav-link">
+                <a href="{{route('homeNilai')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     Np
                   </span>

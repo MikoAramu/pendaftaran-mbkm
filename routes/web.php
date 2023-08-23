@@ -31,9 +31,12 @@ Route::prefix('pengurus')->middleware('role:pengurus')->group(function() {
     Route::get('/delete-program/{id}', 'PengurusController@deleteProgram')->name('deleteProgram');
     Route::get('/surat-pengakuan', 'PengurusController@validasiSuratpengakuan')->name('pengurus_surat_pengakuan');
     //pengurus Bagian Nilai
-    Route::get('/upload-nilai-perkuliahan', 'PengurusController@uploadNilaiPerkuliahan')->name('pengurus_upload_nilai_perkuliahan');
+    Route::get('/home-nilai', 'NilaiMahasiswaPerkuliahanController@homeNilai')->name('homeNilai');
+    Route::get('/input-nilai', 'NilaiMahasiswaPerkuliahanController@masukNilai')->name('masukNilai');
     Route::get('/upload-nilai-perkuliahan/index', 'PengurusController@indexNilai')->name('pengurus.uploadnilai.index');
     Route::get('/upload-nilai-perkuliahan/create', 'PengurusController@createNilai')->name('createNilai');
+    //Route::get('/upload-nilai-perkuliahan/edit/{id}', 'PengurusController@editNilai')->name('editNilai');
+    //Route::get('/upload-nilai-perkuliahan', 'PengurusController@saveNilai')->name('saveNilai');
 });
 
 // Prodi

@@ -13,13 +13,13 @@
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Upload Nilai Perkuliahan</li>
+                <li class="breadcrumb-item active" aria-current="page">Nilai Perkuliahan</li>
               </ol>
             </nav>
 
             <div class="pb-3">
-              <h1>Upload Nilai Perkuliahan </h1>
-              <dd>Upload Nilai Perkuliahan Mahasiswa harus sesuai Prodi & Semester yang diikuti</dd>
+              <h1>Nilai Perkuliahan </h1>
+              <dd>Nilai Perkuliahan Mahasiswa harus sesuai Prodi & Semester yang diikuti</dd>
             </div>
 
             <div class="card-header">
@@ -46,13 +46,10 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <th scope="col">NPM</th>
-                          <th scope="col">Nama Lengkap</th>
-                          <th scope="col">Kelas</th>
-                          <th scope="col">Prodi</th>
+                          <th scope="col">Kode Mata Kuliah</th>
+                          <th scope="col">Nama Mata Kuliah</th>
+                          <th scope="col">Jurusan</th>
                           <th scope="col">Semester</th>
-                          <th scope="col">No. Telepon</th>
-                          <th scope="col">Nilai MBKM</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -64,16 +61,13 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>13119986</td>
-                          <td>M. Alamsyah Putra Zatmiko</td>
-                          <td>4KA24</td>
+                          <td>1123</td>
+                          <td>Algoritma</td>
                           <td>Sistem Informasi</td>
-                          <td>Semester 7</td>
-                          <td>081263478512</td>
-                          <td>90</td>
+                          <td>Semester 6</td>
                           <td>
-                            <a href="{{ route('pengurus.uploadnilai.index') }}" class="btn btn-sm btn-primary">
-                            <i class="oi oi-folder"></i>&nbsp; Upload Nilai</a>
+                            <a href="{{ route('masukNilai') }}" class="btn btn-sm btn-primary">
+                            <i class="oi oi-folder"></i>&nbsp; Masukkan Nilai</a>
                           </td>
                         </tr>
                         <tr>

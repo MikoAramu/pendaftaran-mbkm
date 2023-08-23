@@ -54,6 +54,7 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($dataMatakuliah as $mk)
                         <tr>
                           <th scope="row">
                             <label class="custom-control custom-checkbox m-0 p-0">
@@ -61,12 +62,12 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>1123</td>
-                          <td>Algoritma</td>
-                          <td>Sistem Informasi</td>
+                          <td>{{ $mk->kode_matkul }}</td>
+                          <td>{{ $mk->nama_matkul }}</td>
                           <td>Semester 6</td>
+                          <td>{{ $mk->jurusan->nama_jurusan }}</td>
                           <td>
-                            <a href="{{ route('masukNilai') }}" class="btn btn-sm btn-primary">
+                            <a href="{{ route('inputNilai') }}" class="btn btn-sm btn-primary">
                             <i class="oi oi-folder"></i>&nbsp; Masukkan Nilai</a>
                             <a href="{{ route('editNilai') }}" class="btn btn-sm btn-warning">Ubah</a>
                             <a href="{{ route('detailNilai') }}" class="btn btn-sm btn-secondary">Detail</a>
@@ -80,6 +81,7 @@
                             </label>
                           </th>
                         </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

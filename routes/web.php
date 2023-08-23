@@ -30,9 +30,9 @@ Route::prefix('pengurus')->middleware('role:pengurus')->group(function() {
     Route::post('/update-program', 'PengurusController@updateProgram')->name('updateProgram');
     Route::get('/delete-program/{id}', 'PengurusController@deleteProgram')->name('deleteProgram');
     Route::get('/surat-pengakuan', 'PengurusController@validasiSuratpengakuan')->name('pengurus_surat_pengakuan');
-    //pengurus Bagian Nilai
-    Route::get('/home-nilai', 'NilaiMahasiswaPerkuliahanController@homeNilai')->name('homeNilai');
-    Route::get('/input-nilai', 'NilaiMahasiswaPerkuliahanController@masukNilai')->name('masukNilai');
+    //pengurus Bagian Nilai Perkuliahan Mahasiswa
+    Route::get('/index-nilai', 'NilaiMahasiswaPerkuliahanController@indexNilai')->name('indexNilai');
+    Route::get('/input-nilai', 'NilaiMahasiswaPerkuliahanController@inputNilai')->name('inputNilai');
     Route::get('/edit-nilai', 'NilaiMahasiswaPerkuliahanController@editNilai')->name('editNilai');
     Route::get('/detail-nilai-mahasiswa', 'NilaiMahasiswaPerkuliahanController@detailNilai')->name('detailNilai');
     //Route::get('/upload-nilai-perkuliahan/edit/{id}', 'PengurusController@editNilai')->name('editNilai');

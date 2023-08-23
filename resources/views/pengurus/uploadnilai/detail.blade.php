@@ -13,7 +13,7 @@
             </nav>
 
             <div class="pb-3">
-                <h1>Input Nilai Perkuliahan Mahasiswa </h1>
+                <h1>Detail Nilai Perkuliahan Mahasiswa </h1>
             </div>
         </div>
 
@@ -65,8 +65,8 @@
                                 <!-- Tambahkan baris lain sesuai dengan jumlah mata kuliah -->
                             </table>
                             <div class="form-group row mt-3">
-                                <div class="col-sm-12 text-center">
-                                    <a href="{{ Route('homeNilai') }}" class="btn btn-primary">Kembali</a>
+                                <div class="col-sm-12 text-right">
+                                    <a href="{{ Route('indexNilai') }}" class="btn btn-primary">Kembali</a>
                                 </div>
                             </div>
                         </form>

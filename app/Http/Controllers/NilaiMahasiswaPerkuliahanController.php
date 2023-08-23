@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+Use App\MataKuliah;
+
 class NilaiMahasiswaPerkuliahanController extends Controller
 {
     /**
@@ -11,12 +13,13 @@ class NilaiMahasiswaPerkuliahanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function homeNilai()
+    public function indexNilai()
     {
-        return view('pengurus.uploadnilai.home');
+        $dataMatakuliah = MataKuliah::with(['jurusan','semesters'])->get();
+        return view('pengurus.uploadnilai.index', ['dataMatakuliah' => $dataMatakuliah]);   
     }
 
-    public function masukNilai()
+    public function inputNilai()
     {
         return view('pengurus.uploadnilai.inputnilai');
     }

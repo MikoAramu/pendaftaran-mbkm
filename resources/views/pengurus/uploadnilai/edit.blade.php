@@ -18,7 +18,7 @@
 
             <div class="pb-3">
               <h1>Algoritma Pemrograman 2 </h1>
-              <dd>Silahkan masukkan nilai mahasiswa</dd>
+              <dd>Silahkan ubah nilai mahasiswa</dd>
             </div>
 
 <table class="table table-bordered">

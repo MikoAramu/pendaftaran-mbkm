@@ -47,10 +47,10 @@
                             Masuk ke akun saya
                         </button>
                         <a
-                            href="{{ route('register') }}"
+                            href="{{ route('home') }}"
                             class="btn btn-signup btn-block w-75 mt-2"
                         >
-                            Daftar akun
+                            Kembali
                         </a>
                     </form>
                 </div>

@@ -1,0 +1,42 @@
+.demo-icons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: -0.5rem;
+}
+
+.demo-icon {
+  width: 33.3333333333%;
+  margin-top: 0.5rem;
+}
+.demo-icon:hover .demo-icon-display {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.demo-icon-display {
+  min-height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-icon-name {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 769px) {
+  .demo-icon {
+    width: 25%;
+  }
+}
+@media (min-width: 960px) {
+  .demo-icon {
+    width: 16.6666666667%;
+  }
+}
+@media (min-width: 1200px) {
+  .demo-icon {
+    width: 11.1111111111%;
+  }
+}/*# sourceMappingURL=demo.css.map */

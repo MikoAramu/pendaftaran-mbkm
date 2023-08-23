@@ -39,6 +39,7 @@ Route::prefix('prodi')->middleware('role:prodi')->group(function() {
 Route::prefix('mahasiswa')->middleware('role:mahasiswa')->group(function() {
     Route::get('/form-pendaftaran', 'MahasiswaController@formPendaftaran')->name('form_pendaftaran');
     Route::get('/surat-pengakuan-sks', 'MahasiswaController@suratPengakuanSKS')->name('surat_pengakuan_sks');
+    Route::get('/pengumuman-surat-pengakuan-sks', 'MahasiswaController@pengumumanSuratPengakuanSKS')->name('pengumuman_surat_pengakuan_sks');
     Route::get('/laporan-akhir-dan-nilai-total', 'MahasiswaController@la_dan_nt')->name('laporan_akhir_dan_nilai_total');
     Route::post('/simpan-pendaftaran', 'MahasiswaController@simpanPendaftaran')->name('simpan_pendaftaran');
     Route::get('/pengumuman-pendaftaran', 'MahasiswaController@pengumumanPendaftaran')->name('pengumuman_pendaftaran');
@@ -46,7 +47,12 @@ Route::prefix('mahasiswa')->middleware('role:mahasiswa')->group(function() {
     Route::get('/cetaksptjm', 'MahasiswaController@cetaksptjm')->name('cetaksptjm');
     Route::get('/dashboard-mahasiswa', 'MahasiswaController@dashboard')->name('dashboard_mahasiswa');
     Route::post('/update-sptjm', 'MahasiswaController@updateSPTJM')->name('updateSPTJM');
+    Route::get('/laporan-akhir-dan-nilai-total', 'NilaiMahasiswaMbkmController@inputLaporanAkhirDanNilaiTotal')->name('laporan_akhir_dan_nilai_total');
+    Route::post('/simpan-laporan-akhir-dan-nilai-total', 'NilaiMahasiswaMbkmController@simpanLaporanAkhirdanNilaiTotal')->name('simpan_laporan_akhir_dan_nilai_total');
+
+    Route::post('/update-mitra-bidang', 'MahasiswaController@updateMitraBidang')->name('update_mitra_bidang');
+    Route::post('/update-surat-pengakuan-sks', 'MahasiswaController@updateSuratPengakuanSKS')->name('update_surat_pengakuan_sks');   
+    
 });
 
-Route::get('/laporan-akhir-dan-nilai-total', 'NilaiMahasiswaMbkmController@inputLaporanAkhirDanNilaiTotal')->name('laporan_akhir_dan_nilai_total');
-Route::post('/simpan-laporan-akhir-dan-nilai-total', 'NilaiMahasiswaMbkmController@simpanLaporanAkhirdanNilaiTotal')->name('simpan_laporan_akhir_dan_nilai_total');
+

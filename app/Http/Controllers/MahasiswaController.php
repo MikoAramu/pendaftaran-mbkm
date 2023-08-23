@@ -16,6 +16,8 @@ use App\Jurusan;
 use App\Fakultas;
 use App\Semester;
 
+use Illuminate\Support\Facades\Log;
+
 // use Barryvdh\DomPDF\Facade\Pdf;
 use PDF;
 
@@ -178,7 +180,7 @@ class MahasiswaController extends Controller
             'tanggal_lahir' => $request->input('tanggal_lahir'),
             'jurusan_id' => $request->input('jurusan_id'),
             'fakultas_id' => $request->input('fakultas_id'),
-            'program_id' => $request->input('program_id'),
+            // 'program_id' => $request->input('program_id'),
             'ipk' => $request->input('ipk'),
             'semester_id' => $request->input('semester_id'),
             'angkatan' => $request->input('angkatan'),
@@ -230,38 +232,233 @@ class MahasiswaController extends Controller
 
     public function updateSPTJM(Request $request)
     {
-        // Mengambil data mahasiswa berdasarkan user_id
-        $user_id = Auth::id();
-        $mahasiswa = Mahasiswa::where('user_id', $user_id)->first();
+        
+        $request->validate([
+        'id_mahasiswa' => 'required',
+        'upload_sptjm' => 'required|file|mimes:pdf', // Validasi file PDF
+        ]);
+
+        $mahasiswa = Mahasiswa::find($request->input('id_mahasiswa'));
 
         if ($mahasiswa) {
-            // Melakukan validasi data yang diterima dari form upload
-            $request->validate([
-                'sptjm_pdf' => 'required|mimes:pdf|max:2048', // Pastikan sesuai dengan atribut name di form
-            ]);
-
-            // Proses upload file dan update kolom upload_sptjm
-            if ($request->hasFile('sptjm_pdf')) {
-                $sptjm_pdf = $request->file('sptjm_pdf');
-                $sptjm_pdf_path = $sptjm_pdf->store('pdfs', 'public'); // Ganti 'pdfs' dengan nama folder yang sesuai
-                $mahasiswa->update(['upload_sptjm' => $sptjm_pdf_path]);
+            if ($request->hasFile('upload_sptjm')) {
+                // Proses pengunggahan file surat pengakuan SKS
+                $upload_sptjm = $request->file('upload_sptjm');
+                $upload_sptjmName = $mahasiswa->npm . '.' . $upload_sptjm->getClientOriginalExtension();
+                $upload_sptjmPath = $upload_sptjm->storeAs('public/sptjm_mhs_ttd', $upload_sptjmName);
+                
+                // Simpan path file surat pengakuan SKS ke database
+                $mahasiswa->upload_sptjm = $upload_sptjmPath;
             }
 
-            return redirect()->back()->with('success', 'File SPTJM berhasil diupload.');
+            $mahasiswa->save();
+
+            return redirect()->back()->with('success', 'Data berhasil diperbarui');
+        } else {
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }        
+    }
+
+    // public function suratPengakuanSKS()
+    // {
+    //     return view('mahasiswa.form_surat_pengakuan_sks');
+    // }
+
+    //     public function updateNPM(Request $request)
+// {
+//     $request->validate([
+//         'id_mahasiswa' => 'required',
+//         // 'npm' => 'required',
+//         // 'krs' => 'required|mimes:pdf',
+//         'matkul' => 'required|array',
+//     ]);
+
+//     $mahasiswa = Mahasiswa::find($request->input('id_mahasiswa'));
+
+//     if ($mahasiswa) {
+//         $mahasiswa->npm = $request->input('npm');
+
+//         // Proses pengunggahan file KRS
+//         if ($request->hasFile('krs')) {
+//             $krs_file = $request->file('krs');
+//             $krs_ekstensi = $krs_file->getClientOriginalExtension();
+//             $krs_nama = $request->input('npm') . '.' . $krs_ekstensi;
+//             $krsPath = $krs_file->storeAs('public/krs', $krs_nama);
+
+//             // Simpan path KRS ke database
+//             $mahasiswa->krs = $krsPath;
+//         }
+
+//         // Mendapatkan nilai dari input 'matkul'
+//         $selectedMatkuls = $request->input('matkul');
+
+//         // ... (Kode lainnya)
+
+//         // Mendapatkan data kode_matkul dan nama_matkul dari database berdasarkan $selectedMatkuls
+//         $kodeMatkulArray = [];
+//         $namaMatkulArray = [];
+//         if (!empty($selectedMatkuls)) {
+//             foreach ($selectedMatkuls as $matkulId) {
+//                 $matkul = Matkul::find($matkulId);
+//                 if ($matkul) {
+//                     $kodeMatkulArray[] = $matkul->kode_matkul;
+//                     $namaMatkulArray[] = $matkul->nama_matkul;
+//                 }
+//             }
+//         }
+
+//         // Menggabungkan kode_matkul menjadi array JSON
+//         $kode_matkul = empty($kodeMatkulArray) ? [] : json_encode($kodeMatkulArray);
+//         // Menggabungkan nama_matkul menjadi array JSON
+//         $nama_matkul = empty($namaMatkulArray) ? [] : json_encode($namaMatkulArray);
+
+//         $totalSKS = 0;
+//         if (!empty($selectedMatkuls)) {
+//             // Mengambil data SKS berdasarkan id_matkul yang dipilih
+//             $selectedSks = Matkul::whereIn('id_matkul', $selectedMatkuls)->pluck('jumlah_sks')->toArray();
+
+//             // Jumlahkan nilai SKS yang dipilih
+//             $totalSKS = array_sum($selectedSks);
+//         }
+
+//         $mahasiswa->total_sks = $totalSKS;
+//         $mahasiswa->kode_matkul = $kode_matkul;
+//         $mahasiswa->nama_matkul = $nama_matkul;
+
+//         $mahasiswa->save();
+
+//         return redirect()->back()->with('success', 'Data berhasil diubah');
+//     } else {
+//         return redirect()->back()->with('error', 'Data tidak ditemukan');
+//     }
+// }
+
+public function suratPengakuanSKS()
+{
+    $programs = Program::all();
+    $jurusans = Jurusan::all();
+    $fakultas = Fakultas::all();                
+    $user_id = Auth::id();
+    $mahasiswa = Mahasiswa::where('user_id', $user_id)->first();
+    $status = $mahasiswa ? $mahasiswa->status : null;
+    $bidang_mbkm = $mahasiswa ? $mahasiswa->bidang_mbkm : null;
+
+    return view('mahasiswa.form_surat_pengakuan_sks', [
+        'programs' => $programs,
+        'jurusans' => $jurusans,
+        'fakultass' => $fakultas,
+        'status' => $status,
+        'mahasiswa' => $mahasiswa,
+        'bidang_mbkm' => $bidang_mbkm,
+    ]);
+}
+
+
+public function updateMitraBidang(Request $request)
+{
+    $request->validate([
+        'id_mahasiswa' => 'required',
+        'mitra' => 'required',
+        'bidang' => 'required',
+        'program_id'=> 'required',
+    ]);
+
+    $mahasiswa = Mahasiswa::find($request->input('id_mahasiswa'));
+
+    if ($mahasiswa) {
+        $mahasiswa->mitra_mbkm = $request->input('mitra');
+        $mahasiswa->bidang_mbkm = $request->input('bidang');
+        $mahasiswa->program_id = $request->input('program_id');        
+        $mahasiswa->save();
+
+        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+    } else {
+        return redirect()->back()->with('error', 'Data tidak ditemukan');
+    }
+}
+
+
+    public function pengumumanSuratPengakuanSKS()
+    {
+
+        $user_id = Auth::id();
+
+    $mahasiswa = Mahasiswa::where('user_id', $user_id)->first(); // Mengambil data mahasiswa berdasarkan user_id
+
+    return view('mahasiswa.pengumuman_surat_pengakuan_sks', [
+        'mahasiswa' => $mahasiswa,
+    ]);
+
+        // return view('mahasiswa.pengumuman_surat_pengakuan_sks');
+    }
+
+
+public function updateSuratPengakuanSKS(Request $request)
+{
+    $request->validate([
+        'id_mahasiswa' => 'required',
+        'upload_surat_pengakuan_sks' => 'required|file|mimes:pdf', // Validasi file PDF
+    ]);
+
+    $mahasiswa = Mahasiswa::find($request->input('id_mahasiswa'));
+
+    if ($mahasiswa) {
+        if ($request->hasFile('upload_surat_pengakuan_sks')) {
+            // Proses pengunggahan file surat pengakuan SKS
+            $uploadSuratPengakuanSKS = $request->file('upload_surat_pengakuan_sks');
+            $uploadSuratPengakuanSKSName = $mahasiswa->npm . '.' . $uploadSuratPengakuanSKS->getClientOriginalExtension();
+            $uploadSuratPengakuanSKSPath = $uploadSuratPengakuanSKS->storeAs('public/surat_pengakuan_sks', $uploadSuratPengakuanSKSName);
+            
+            // Simpan path file surat pengakuan SKS ke database
+            $mahasiswa->upload_surat_pengakuan_sks = $uploadSuratPengakuanSKSPath;
         }
 
-        return response()->json(['message' => 'Data mahasiswa tidak ditemukan'], 404);
-    }
+        $mahasiswa->save();
 
-    public function suratPengakuanSKS()
-    {
-        return view('mahasiswa.form_surat_pengakuan_sks');
+        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+    } else {
+        return redirect()->back()->with('error', 'Data tidak ditemukan');
     }
+}
 
-    public function PengumumanSuratPengakuanSKS()
-    {
-        return view('mahasiswa.pengumuman_surat_pengakuan_sks');
-    }
+
+
+
+//     public function updateSuratPengakuanSKS(Request $request)
+// {
+//     $request->validate([
+//         'id_mahasiswa' => 'required',
+//         // 'mitra' => 'required',
+//         // 'bidang' => 'required',
+//         // 'program_id'=> 'required',
+//         'upload_surat_pengakuan_sks' => 'required',
+//     ]);
+
+//     $mahasiswa = Mahasiswa::find($request->input('id_mahasiswa'));
+
+//     if ($mahasiswa) {
+
+//         // Proses pengunggahan file KRS
+//         if ($request->hasFile('upload_surat_pengakuan_sks')) {
+//             $upload_surat_pengakuan_sks_file = $request->file('upload_surat_pengakuan_sks');
+//             $upload_surat_pengakuan_sks_ekstensi = $upload_surat_pengakuan_sks_file->getClientOriginalExtension(); // Menggunakan getClientOriginalExtension() untuk mendapatkan ekstensi
+//             $upload_surat_pengakuan_sks_nama = $request->input('npm') . '.' . $upload_surat_pengakuan_sks_ekstensi;
+//             $upload_surat_pengakuan_sksPath = $upload_surat_pengakuan_sks_file->storeAs('public/suratsks', $upload_surat_pengakuan_sks_nama);
+            
+//             // Simpan path KRS ke database
+//             $mahasiswa->upload_surat_pengakuan_sks = $upload_surat_pengakuan_sksPath;
+//         }
+
+//         // $mahasiswa->mitra_mbkm = $request->input('mitra');
+//         // $mahasiswa->bidang_mbkm = $request->input('bidang');
+//         // $mahasiswa->program_id = $request->input('program_id');        
+//         $mahasiswa->save();
+
+//         return redirect()->back()->with('success', 'Data berhasil diperbarui');
+//     } else {
+//         return redirect()->back()->with('error', 'Data tidak ditemukan');
+//     }
+// }
 
     public function la_dan_nt()
     {

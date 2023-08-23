@@ -64,11 +64,11 @@
                           </th>
                           <td>{{ $mk->kode_matkul }}</td>
                           <td>{{ $mk->nama_matkul }}</td>
-                          <td>{{ $mk->semesters->semester_id}}</td>
                           <td>{{ $mk->jurusan->nama_jurusan }}</td>
+                          <td>{{ $mk->semesters->nama_semester }}</td>
                           <td>
-                            <a href="{{ route('inputNilai') }}" class="btn btn-sm btn-primary">
-                            <i class="oi oi-folder"></i>&nbsp; Masukkan Nilai</a>
+                            <a href="{{ route('inputNilai', ['id' => $mk->id]) }}" class="btn btn-sm btn-primary">
+                              <i class="oi oi-folder"></i>&nbsp; Masukkan Nilai</a>
                             <a href="{{ route('editNilai') }}" class="btn btn-sm btn-warning">Ubah</a>
                             <a href="{{ route('detailNilai') }}" class="btn btn-sm btn-secondary">Detail</a>
                           </td>

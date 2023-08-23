@@ -121,11 +121,6 @@ class PengurusController extends Controller
         return redirect()->route('indexNilai');
     }
 
-    public function editNilai($id)
-    {
-        $nilai = Program::find($id);
-        return view('pengurus.uploadnilai.edit', compact('nilai'));
-    }
     /**
      * Remove the specified resource from storage.
      *

@@ -63,7 +63,7 @@
                           <td>{{$data->id}}</td>
                           <td>{{$data->nama_program}}</td>
                           <td>
-                            <a href="{{ route('editProgram', $data->id) }}" class="btn btn-sm btn-primary">Sunting</a>
+                            <a href="{{ route('editProgram', $data->id) }}" class="btn btn-sm btn-primary">Ubah</a>
                             <a href="{{ route('deleteProgram', $data->id) }}" class="btn btn-sm btn-danger">Hapus</button>
                           </td>
                         </tr>

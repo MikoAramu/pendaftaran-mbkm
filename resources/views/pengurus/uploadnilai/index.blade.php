@@ -64,7 +64,7 @@
                           </th>
                           <td>{{ $mk->kode_matkul }}</td>
                           <td>{{ $mk->nama_matkul }}</td>
-                          <td>Semester 6</td>
+                          <td>{{ $mk->semesters->semester_id}}</td>
                           <td>{{ $mk->jurusan->nama_jurusan }}</td>
                           <td>
                             <a href="{{ route('inputNilai') }}" class="btn btn-sm btn-primary">

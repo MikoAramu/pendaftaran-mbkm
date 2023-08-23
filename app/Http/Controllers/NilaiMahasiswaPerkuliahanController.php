@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+Use App\user;
 Use App\MataKuliah;
 
 class NilaiMahasiswaPerkuliahanController extends Controller
@@ -16,12 +16,19 @@ class NilaiMahasiswaPerkuliahanController extends Controller
     public function indexNilai()
     {
         $dataMatakuliah = MataKuliah::with(['jurusan','semesters'])->get();
-        return view('pengurus.uploadnilai.index', ['dataMatakuliah' => $dataMatakuliah]);   
+        return view('pengurus.uploadnilai.index', ['dataMatakuliah' => $dataMatakuliah]);
     }
 
     public function inputNilai()
     {
-        return view('pengurus.uploadnilai.inputnilai');
+        $datauser = User::where('role', 'mahasiswa')->get();
+
+        $dataMatakuliah = MataKuliah::with(['jurusan','semesters'])->get();
+
+        return view('pengurus.uploadnilai.inputnilai', [
+            'datauser' => $datauser,
+            'dataMatakuliah' => $dataMatakuliah
+        ]);
     }
 
      public function editNilai()

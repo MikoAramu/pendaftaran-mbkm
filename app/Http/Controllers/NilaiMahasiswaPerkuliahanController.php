@@ -21,6 +21,17 @@ class NilaiMahasiswaPerkuliahanController extends Controller
         return view('pengurus.uploadnilai.inputnilai');
     }
 
+     public function editNilai()
+    {
+        //$nilai = Program::find($id);
+        return view('pengurus.uploadnilai.edit');
+    }
+
+    public function detailNilai()
+    {
+        return view('pengurus.uploadnilai.detail');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

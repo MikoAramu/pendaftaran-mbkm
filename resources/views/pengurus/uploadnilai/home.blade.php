@@ -68,6 +68,8 @@
                           <td>
                             <a href="{{ route('masukNilai') }}" class="btn btn-sm btn-primary">
                             <i class="oi oi-folder"></i>&nbsp; Masukkan Nilai</a>
+                            <a href="{{ route('editNilai') }}" class="btn btn-sm btn-warning">Ubah</a>
+                            <a href="{{ route('detailNilai') }}" class="btn btn-sm btn-secondary">Detail</a>
                           </td>
                         </tr>
                         <tr>

@@ -56,17 +56,17 @@
                                 </tr>
                                 <tr>
                                     <td>B. Inggris 2</td>
-                                    <td><input type="text" name="nilai_kuliah" class="form-control" placeholder="Masukkan Nilai"></td>
+                                    <td>90</td>
                                 </tr>
                                 <tr>
                                     <td>Algoritma Pemrograman</td>
-                                    <td><input type="text" name="nilai_kuliah" class="form-control" placeholder="Masukkan Nilai"></td>
+                                    <td>85</td>
                                 </tr>
                                 <!-- Tambahkan baris lain sesuai dengan jumlah mata kuliah -->
                             </table>
                             <div class="form-group row mt-3">
                                 <div class="col-sm-12 text-center">
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <a href="{{ Route('homeNilai') }}" class="btn btn-primary">Kembali</a>
                                 </div>
                             </div>
                         </form>

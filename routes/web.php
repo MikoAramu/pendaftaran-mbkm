@@ -33,8 +33,8 @@ Route::prefix('pengurus')->middleware('role:pengurus')->group(function() {
     //pengurus Bagian Nilai
     Route::get('/home-nilai', 'NilaiMahasiswaPerkuliahanController@homeNilai')->name('homeNilai');
     Route::get('/input-nilai', 'NilaiMahasiswaPerkuliahanController@masukNilai')->name('masukNilai');
-    Route::get('/upload-nilai-perkuliahan/index', 'PengurusController@indexNilai')->name('pengurus.uploadnilai.index');
-    Route::get('/upload-nilai-perkuliahan/create', 'PengurusController@createNilai')->name('createNilai');
+    Route::get('/edit-nilai', 'NilaiMahasiswaPerkuliahanController@editNilai')->name('editNilai');
+    Route::get('/detail-nilai-mahasiswa', 'NilaiMahasiswaPerkuliahanController@detailNilai')->name('detailNilai');
     //Route::get('/upload-nilai-perkuliahan/edit/{id}', 'PengurusController@editNilai')->name('editNilai');
     //Route::get('/upload-nilai-perkuliahan', 'PengurusController@saveNilai')->name('saveNilai');
 });

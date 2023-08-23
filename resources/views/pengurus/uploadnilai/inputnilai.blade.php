@@ -17,41 +17,48 @@
             </nav>
 
             <div class="pb-3">
-              <h1>Algoritma Pemrograman 2 </h1>
-              <dd>Silahkan masukkan nilai mahasiswa</dd>
+              <h1>Silahkan masukkan nilai mahasiswa</h1>
             </div>
 
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>No</th>
-        <th>NPM</th>
-        <th>Nama Mahasiswa</th>
-        <th>Jurusan</th>
-        <th>Semester</th>
-        <th>Input Nilai</th>
-        <th>Aksi</th>
-    </tr>
-</thead>
-    <tbody>
-        
-        <tr>
-          <td>1</td>
-          <td>131119986</td>
-          <td>M. John Doe</td>
-          <td>Sistem Informasi</td>
-          <td>Semester 6</td>
-          <form class="" action="#" method="post">
-          <td>
-              <input type="number" name="nilai" value="">
-              <input type="hidden" name="noinduk" value="">
-              <input type="hidden" name="mapel" value="">
-          </td>
-          <td> <button type="submit" name="button" class="btn btn-primary">Simpan</button> </td>
-        </form>
-        </tr>
-        
-    </tbody>
-</table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NPM</th>
+                        <th>Nama Mahasiswa</th>
+                        <th>Jurusan</th>
+                        <th>Semester</th>
+                        <th>Input Nilai</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($datauser as $user)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $user->npm }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->jurusan }}</td>
+                        <td>{{ $user->semester }}</td>
+                        <td>
+                            <form action="#" method="post">
+                                @csrf
+                                <input type="hidden" name="mahasiswa_id" value="{{ $user->id }}">
+                                <select name="matkul_id">
+                                    @foreach($dataMatakuliah as $mk)
+                                    <option value="{{ $mk->id }}">{{ $mk->nama_matkul }}</option>
+                                    @endforeach
+                                </select>
+                                <input type="number" name="nilai_kuliah" value="">
+                        </td>
+                        <td>
+                            <!-- Simpan tombol di sini -->
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
 
 @endsection

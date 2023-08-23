@@ -27,9 +27,6 @@
                 <a href="{{ route('createProgram') }}" class="btn btn-sm btn-primary">
                     <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Program &nbsp;
                 </a>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#dropTable">
-                    <i class="nav-icon fas fa-minus-circle"></i> &nbsp; Hapus Semua Program &nbsp;
-                </button>
             </h3>
           </div>
 

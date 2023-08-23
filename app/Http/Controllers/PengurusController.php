@@ -35,11 +35,7 @@ class PengurusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function uploadNilaiPerkuliahan(Request $request)
-    {
-        
-        return view('pengurus.upload_nilai_perkuliahan');
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -111,14 +107,24 @@ class PengurusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function indexNilai()
+
+    public function saveNilai(Request $request)
     {
-        return view('pengurus.uploadnilai.index');
+        $save = Program::create($request->all());
+
+        if (!$save) {
+            Alert::error('Error', 'Gagal Mengingput Nilai!');
+            return redirect()->back();
+        }
+
+        Alert::success('Success', 'Berhasil Menginput Nilai!');
+        return redirect()->route('indexNilai');
     }
 
-    public function createNilai()
+    public function editNilai($id)
     {
-        return view('pengurus.uploadnilai.create');
+        $nilai = Program::find($id);
+        return view('pengurus.uploadnilai.edit', compact('nilai'));
     }
     /**
      * Remove the specified resource from storage.

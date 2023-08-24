@@ -23,12 +23,12 @@
             </div>
 
             <div class="card-header">
-            <h3 class="card-title">
-                <a href="#" class="btn btn-sm btn-success">
-                    <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Konversi Nilai Semua Mahasiswa &nbsp;
-                </a>
-            </h3>
-          </div>
+                <h3 class="card-title">
+                    <a href="{{ route('indexKonversi') }}" class="btn btn-sm btn-success">
+                      <i class="nav-icon fas fa-folder-plus"></i> Konversi Nilai Semua Mahasiswa
+                  </a>
+                </h3>
+            </div>
 
             <div class="row">
             <div class="col">
@@ -70,7 +70,7 @@
                             <a href="{{ route('inputNilai', ['id' => $mk->id]) }}" class="btn btn-sm btn-primary">
                               <i class="oi oi-folder"></i>&nbsp; Masukkan Nilai</a>
                             <a href="{{ route('editNilai') }}" class="btn btn-sm btn-warning">Ubah</a>
-                            <a href="{{ route('detailNilai') }}" class="btn btn-sm btn-secondary">Detail</a>
+                                <a href="{{ route('detailNilai', ['id' => $mk->id]) }}" class="btn btn-sm btn-secondary">Detail Nilai</a>
                           </td>
                         </tr>
                         <tr>

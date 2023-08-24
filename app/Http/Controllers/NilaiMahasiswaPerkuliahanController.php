@@ -10,6 +10,7 @@ Use App\MataKuliah;
 use App\User;
 use App\Mahasiswa;
 use App\NilaiMahasiswaPerkuliahan;
+use App\NilaiMahasiswaMbkm;
 
 class NilaiMahasiswaPerkuliahanController extends Controller
 {
@@ -27,10 +28,11 @@ class NilaiMahasiswaPerkuliahanController extends Controller
     public function inputNilai(Request $request, $id)
     {
         $dataUsers = User::where('role', 'mahasiswa')->get();
-        $npm = $request->npm; // Mendapatkan npm dari request
+        $jurusan_id = $request->jurusan_id; // Mendapatkan jurusan_id dari request
         $matkul_id = $id; // Ambil nilai matkul_id dari parameter
-        return view('pengurus.uploadnilai.inputnilai', compact('dataUsers', 'id', 'npm', 'matkul_id'));
+        return view('pengurus.uploadnilai.inputnilai', compact('dataUsers', 'jurusan_id', 'matkul_id'));
     }
+
 
 
     public function simpanNilai(Request $request)
@@ -65,11 +67,47 @@ class NilaiMahasiswaPerkuliahanController extends Controller
         return view('pengurus.uploadnilai.edit');
     }
 
-    public function detailNilai()
+    public function detailNilai($id)
     {
-        return view('pengurus.uploadnilai.detail');
+        $matkul = MataKuliah::findOrFail($id);
+    
+        $nilaiMahasiswa = NilaiMahasiswaPerkuliahan::with('mahasiswa')
+            ->where('matkul_id', $id)
+            ->get();
+    
+        return view('pengurus.uploadnilai.detail', compact('matkul', 'nilaiMahasiswa'));
     }
 
+    public function indexKonversi()
+    {
+        $dataMatakuliah = MataKuliah::all();
+        $dataUsers = User::where('role', 'mahasiswa')->get();
+
+        return view('pengurus.uploadnilai.indexkonversi', compact('dataMatakuliah', 'dataUsers'));
+    }
+
+    public function konversiNilai(Request $request)
+    {
+        $matkulId = $request->matkul_id;
+
+        $dataUsers = User::where('role', 'mahasiswa')->get();
+
+        foreach ($dataUsers as $user) {
+            foreach ($user->nilaiMahasiswaPerkuliahan as $nilaiPerkuliahan) {
+                if ($nilaiPerkuliahan->matkul_id == $matkulId) {
+                    $nilaiKuliah = $nilaiPerkuliahan->nilai_kuliah;
+                    $nilaiMbkm = $user->nilai_mbkm;
+                    $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);
+
+                    $nilaiPerkuliahan->nilai_final_kuliah = $nilaiFinal;
+                    $nilaiPerkuliahan->save();
+                }
+            }
+        }
+
+        return redirect()->route('indexKonversi')->with('success', 'Konversi nilai berhasil.');
+    }
+   
     /**
      * Show the form for creating a new resource.
      *

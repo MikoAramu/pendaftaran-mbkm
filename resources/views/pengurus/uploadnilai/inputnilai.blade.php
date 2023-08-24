@@ -46,6 +46,7 @@
                     </tbody>
                 </table>
                 <button type="submit" name="button" class="btn btn-primary">Simpan Nilai</button>
+                <a href="{{ Route('indexNilai') }}" class="btn btn-warning">Kembali</a>
             </form>
         </div>
     </div>

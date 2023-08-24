@@ -35,7 +35,9 @@ Route::prefix('pengurus')->middleware('role:pengurus')->group(function() {
     Route::get('/input-nilai/{id}', 'NilaiMahasiswaPerkuliahanController@inputNilai')->name('inputNilai');
     Route::post('/simpan-nilai', 'NilaiMahasiswaPerkuliahanController@simpanNilai')->name('simpanNilai');
     Route::get('/edit-nilai', 'NilaiMahasiswaPerkuliahanController@editNilai')->name('editNilai');
-    Route::get('/detail-nilai-mahasiswa', 'NilaiMahasiswaPerkuliahanController@detailNilai')->name('detailNilai');
+    Route::get('nilai/detail/{id}', 'NilaiMahasiswaPerkuliahanController@detailNilai')->name('detailNilai');
+    Route::get('/konversi-nilai', 'NilaiMahasiswaPerkuliahanController@indexKonversi')->name('indexKonversi');
+    Route::post('/konversi-nilai', 'NilaiMahasiswaPerkuliahanController@konversiNilai')->name('konversiNilai');
     //Route::get('/upload-nilai-perkuliahan/edit/{id}', 'PengurusController@editNilai')->name('editNilai');
     //Route::get('/upload-nilai-perkuliahan', 'PengurusController@saveNilai')->name('saveNilai');
 });

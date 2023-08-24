@@ -1,79 +1,61 @@
 @extends('master')
 @section('content')
 
+<!-- ... Bagian konten lainnya ... -->
+
 <div class="adminx-content">
-    <div class="adminx-main-content">
-        <div class="container-fluid">
+        <!-- <div class="adminx-aside">
+
+        </div> -->
+
+        <div class="adminx-main-content">
+          <div class="container-fluid">
             <!-- BreadCrumb -->
             <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb adminx-page-breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Masukkan Nilai Perkuliahan</li>
-                </ol>
+              <ol class="breadcrumb adminx-page-breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Nilai Perkuliahan</li>
+              </ol>
             </nav>
 
-            <div class="pb-3">
-                <h1>Detail Nilai Perkuliahan Mahasiswa </h1>
-            </div>
-        </div>
-
+<div class="row">
+    <div class="col">
         <div class="card mb-grid">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="link_gambar_mahasiswa.jpg" alt="Foto Mahasiswa" class="img-fluid">
-                        </div>
-                        <div class="col-md-8">
-                            <ul class="list-unstyled">
-                                <li><strong>Nama:</strong> M. Alamsyah Putra Zatmiko</li>
-                                <li><strong>Kelas:</strong> 4KA24</li>
-                                <li><strong>NPM:</strong> 13119986</li>
-                                <li><strong>Jenis Kelamin:</strong> Laki-laki</li>
-                                <li><strong>Jurusan:</strong> Sistem Informasi</li>
-                                <li><strong>Semester:</strong> 7</li>
-                                <li><strong>No. Telepon:</strong> 081263478512</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="card-header-title">Detail Nilai</div>
             </div>
-        </div>
+            <div class="card-body">
+                <h4>Detail Mata Kuliah</h4>
+                <p><strong>Nama Matkul:</strong> {{ $matkul->nama_matkul }}</p>
+                <p><strong>Kode Mata Kuliah:</strong> {{ $matkul->kode_matkul }}</p>
+                <p><strong>Jurusan:</strong> {{ $matkul->jurusan->nama_jurusan }}</p>
+                <p><strong>Semester:</strong> {{ $matkul->semester_id }}</p>
 
-        <div class="row">
-            <div class="col">
-                <div class="card mb-grid">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <div class="card-header-title">Nilai</div>
-                    </div>
-                    <div class="card-body">
-                        <form action="#" method="POST">
-                            {{ csrf_field() }}
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>Nama Mata Kuliah</th>
-                                    <th>Nilai</th>
-                                </tr>
-                                <tr>
-                                    <td>B. Inggris 2</td>
-                                    <td>90</td>
-                                </tr>
-                                <tr>
-                                    <td>Algoritma Pemrograman</td>
-                                    <td>85</td>
-                                </tr>
-                                <!-- Tambahkan baris lain sesuai dengan jumlah mata kuliah -->
-                            </table>
-                            <div class="form-group row mt-3">
-                                <div class="col-sm-12 text-right">
-                                    <a href="{{ Route('indexNilai') }}" class="btn btn-primary">Kembali</a>
-                                </div>
-                            </div>
-                        </form>
+                <h4>Nilai Mahasiswa</h4>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Nama Mahasiswa</th>
+                        <th>Nilai Perkuliahan</th>
+                        <th>Nilai MBKM</th>
+                    </tr>
+                    @foreach ($nilaiMahasiswa as $nilai)
+                        <tr>
+                            <td>{{ $nilai->mahasiswa->nama }}</td>
+                            <td>{{ $nilai->nilai_kuliah ?? 'Nilai Tidak Tersedia'}}</td>
+                            <td>{{ $nilai->mahasiswa->nilai_mbkm ?? 'Nilai Tidak Tersedia' }}</td>
+                        </tr>
+                    @endforeach
+                </table>
+                <div class="form-group row mt-3">
+                    <div class="col-sm-12 text-right">
+                        <a href="{{ Route('indexNilai') }}" class="btn btn-primary">Kembali</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- ... Bagian konten lainnya ... -->
+
 @endsection

@@ -108,19 +108,6 @@ class PengurusController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function saveNilai(Request $request)
-    {
-        $save = Program::create($request->all());
-
-        if (!$save) {
-            Alert::error('Error', 'Gagal Mengingput Nilai!');
-            return redirect()->back();
-        }
-
-        Alert::success('Success', 'Berhasil Menginput Nilai!');
-        return redirect()->route('indexNilai');
-    }
-
     /**
      * Remove the specified resource from storage.
      *

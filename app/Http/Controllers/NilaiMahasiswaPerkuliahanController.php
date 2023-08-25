@@ -12,6 +12,7 @@ use App\User;
 use App\Mahasiswa;
 use App\NilaiMahasiswaPerkuliahan;
 use App\NilaiMahasiswaMbkm;
+use App\Jurusan;
 
 class NilaiMahasiswaPerkuliahanController extends Controller
 {
@@ -33,9 +34,6 @@ class NilaiMahasiswaPerkuliahanController extends Controller
         $matkul_id = $id; // Ambil nilai matkul_id dari parameter
         return view('pengurus.uploadnilai.inputnilai', compact('dataUsers', 'jurusan_id', 'matkul_id'));
     }
-
-
-
 
     public function simpanNilai(Request $request)
     {
@@ -61,12 +59,39 @@ class NilaiMahasiswaPerkuliahanController extends Controller
         return redirect()->route('inputNilai', ['id' => $matkulId])->with('success', 'Nilai berhasil disimpan');
     }
 
-
-
-     public function editNilai()
+     public function editNilai($matkul_id)
     {
-        //$nilai = Program::find($id);
-        return view('pengurus.uploadnilai.edit');
+        $dataUsers = User::where('role', 'mahasiswa')->with('mahasiswa')->get();
+    
+        // Mengambil jurusan_id berdasarkan data yang ada pada tabel jurusan
+        $jurusan = Jurusan::where('nama_jurusan', 'Nama Jurusan Yang Sesuai')->first();
+    
+        if ($jurusan) {
+            $jurusan_id = $jurusan->id;
+        } else {
+            // Lakukan penanganan jika jurusan tidak ditemukan
+            $jurusan_id = null; // Atau berikan nilai yang sesuai
+        }
+    
+        return view('pengurus.uploadnilai.edit', compact('dataUsers', 'jurusan_id', 'matkul_id'));
+    }
+    
+    public function updateNilai(Request $request)
+    {
+        $mahasiswa_id = $request->mahasiswa_id;
+        $matkul_id = $request->matkul_id;
+        $nilaiBaru = $request->nilai;
+    
+        // Temukan catatan berdasarkan ID
+        $nilai = NilaiMahasiswaPerkuliahan::find($mahasiswa_id);
+    
+        if ($nilai) {
+            $nilai->nilai_kuliah = $nilaiBaru;
+            $nilai->save();
+        }
+    
+        // Redirect atau kembali ke halaman yang sesuai
+        return redirect()->back()->with('success', 'Nilai berhasil diperbarui.');
     }
 
     public function detailNilai($id)

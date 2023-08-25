@@ -38,25 +38,9 @@
                                 Anda dapat mendownload surat Rekomendasi <br> <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Cetak Surat Rekomendasi</a><br><br>
                                 Anda dapat mendownload SPTJM <br> <a href="{{ route('cetaksptjm') }}" class="btn btn-primary"> Cetak SPTJM</a></p><br><br>
 
-                                @if ($mahasiswa->upload_sptjm)    
-                                <br> <a href="{{ Storage::url($mahasiswa->upload_sptjm) }}" target="_blank" class="btn btn-primary">Lihat PDF SPTJM</a>
-                                @endif
-
-                                {{-- <form action="{{ route('updateSPTJM') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="upload_sptjm">Unggah File PDF SPTJM yang Telah Anda Tandatangani:</label>
-                                        <input type="file" name="upload_sptjm" accept=".pdf" class="form-control-file @error('upload_sptjm') is-invalid @enderror" id="upload_sptjm">
-                                        @error('upload_sptjm')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Unggah</button>
-                                </form> --}}
-
-                                
+                               
                                 @if ($mahasiswa)
-    @if ($mahasiswa->upload_sptjm === null)
+    @if ($mahasiswa->upload_sptjm_ttd_mahasiswa === null)
         <form action="{{ route('updateSPTJM') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id_mahasiswa" value="{{ $mahasiswa->id }}">
@@ -75,16 +59,22 @@
     @endif
 @endif
 
-
                             @else
                                 <p><h3>Status Pendaftaran tidak dikenali</h3></p>
                             @endif
                         @endif
+                        @if ($mahasiswa)
+                                @if ($mahasiswa->status_sptjm_ttd_pengurus == 'Menunggu Validasi')
+                                <p><h3>Menunggu validasi untuk mendapatkan Surat Pengakuan SKS </h3></p>
+                                @elseif ($mahasiswa->status_sptjm_ttd_pengurus == 'Tidak Valid')
+                                <p><h3>Maaf, Anda tidak lolos validasi</h3></p>
+                                @elseif ($mahasiswa->status_sptjm_ttd_pengurus == 'Sudah Valid')
+                                <p><br><h3>Silahkan cetak Surat Pengakuan SKS yang sudah ditanda tangan pengurus</h3></p>
+                                <a href="{{ Storage::url($mahasiswa->upload_surat_sks_ttd_mahasiswa) }}" target="_blank" class="btn btn-primary">Cetak surat pengakuan SKS</a>
 
-                        {{-- <br><br><p><h3>Selamat SPTJM Anda Sudah Tervalidasi</h3><br>
-                            Anda dapat melihat dan mencetak SPTJM yang sudah tervalidasi <br>
-                            <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary">
-                                Cetak SPTJM</a> </p> --}}
+                                 @endif                        
+                        @endif
+
                     </div>
                 </div>
             </div>

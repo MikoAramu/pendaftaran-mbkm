@@ -22,35 +22,73 @@ class NilaiMahasiswaMbkmController extends Controller
         ]);
     }
 
-    public function simpanLaporanAkhirdanNilaiTotal(Request $request)
-    {
-        $request->validate([
-            'file_laporan_akhir' => 'required',
-            'nilai_mbkm' => 'required',
-        ], [
-            'file_laporan_akhir.required' => 'File Laporan Akhir belum diupload',
-            'nilai_mbkm.required' => 'IPK belum diisi',
-        ]);
+public function simpanLaporanAkhirdanNilaiTotal(Request $request)
+{
+    $request->validate([
+        'file_laporan_akhir' => 'required',
+        'nilai_mbkm' => 'required',
+    ], [
+        'file_laporan_akhir.required' => 'File Laporan Akhir belum diupload',
+        'nilai_mbkm.required' => 'IPK belum diisi',
+    ]);
 
-        $mahasiswa_id = auth()->user()->id;
+    $mahasiswa_id = auth()->user()->id;
 
-        if ($request->hasFile('file_laporan_akhir')) {
-            $file_laporan_akhir_file = $request->file('file_laporan_akhir');
-            $file_laporan_akhir_nama = $file_laporan_akhir_file->getClientOriginalName();
-            $file_laporan_akhirPath = $file_laporan_akhir_file->storeAs('public/file_laporan_akhir', $file_laporan_akhir_nama);
-        }
+    $mahasiswa = Mahasiswa::where('user_id', $mahasiswa_id)->first();
 
-        $data = [
-            'mahasiswa_id' => $mahasiswa_id,
-            'file_laporan_akhir' => $file_laporan_akhirPath ?? null,
-            'nilai_mbkm' => $request->input('nilai_mbkm'),
-        ];
-
-        $NilaiMahasiswaMbkm = NilaiMahasiswaMbkm::create($data);
-        $NilaiMahasiswaMbkm->save();
-
-        return redirect()->back()->with('success', 'Pendaftaran berhasil disimpan.');
+    if (!$mahasiswa) {
+        return redirect()->back()->with('error', 'Data mahasiswa tidak ditemukan.');
     }
+
+    if ($request->hasFile('file_laporan_akhir')) {
+        $file_laporan_akhir_file = $request->file('file_laporan_akhir');
+        $file_laporan_akhir_nama = $file_laporan_akhir_file->getClientOriginalName();
+        $file_laporan_akhirPath = $file_laporan_akhir_file->storeAs('public/laporan_akhir', $file_laporan_akhir_nama);
+    }
+
+    $data = [
+        'mahasiswa_id' => $mahasiswa_id,
+        'jurusan_id' => $mahasiswa->jurusan_id, // Ambil dari tabel mahasiswa
+        'semester_id' => $mahasiswa->semester_id, // Ambil dari tabel mahasiswa
+        'file_laporan_akhir' => $file_laporan_akhirPath ?? null,
+        'nilai_mbkm' => $request->input('nilai_mbkm'),
+    ];
+
+    $NilaiMahasiswaMbkm = NilaiMahasiswaMbkm::create($data);
+
+    return redirect()->back()->with('success', 'Pendaftaran berhasil disimpan.');
+}
+
+
+    // public function simpanLaporanAkhirdanNilaiTotal(Request $request)
+    // {
+    //     $request->validate([
+    //         'file_laporan_akhir' => 'required',
+    //         'nilai_mbkm' => 'required',
+    //     ], [
+    //         'file_laporan_akhir.required' => 'File Laporan Akhir belum diupload',
+    //         'nilai_mbkm.required' => 'IPK belum diisi',
+    //     ]);
+
+    //     $mahasiswa_id = auth()->user()->id;
+
+    //     if ($request->hasFile('file_laporan_akhir')) {
+    //         $file_laporan_akhir_file = $request->file('laporan_akhir');
+    //         $file_laporan_akhir_nama = $file_laporan_akhir_file->getClientOriginalName();
+    //         $file_laporan_akhirPath = $file_laporan_akhir_file->storeAs('public/file_laporan_akhir', $file_laporan_akhir_nama);
+    //     }
+
+    //     $data = [
+    //         'mahasiswa_id' => $mahasiswa_id,
+    //         'file_laporan_akhir' => $file_laporan_akhirPath ?? null,
+    //         'nilai_mbkm' => $request->input('nilai_mbkm'),
+    //     ];
+
+    //     $NilaiMahasiswaMbkm = NilaiMahasiswaMbkm::create($data);
+    //     $NilaiMahasiswaMbkm->save();
+
+    //     return redirect()->back()->with('success', 'Pendaftaran berhasil disimpan.');
+    // }
 
     // ... Potongan kode lainnya ...
 

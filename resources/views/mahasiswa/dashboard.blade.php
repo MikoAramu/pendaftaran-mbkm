@@ -27,18 +27,18 @@
                         <h3>Tutorial Melakukan Pendaftaran MBKM</h3>
                         <p>1. Silahkan klik Form Pendaftaran MBKM pada menu Mahasiswa.</p>
                         <p>2. Setelah itu anda dapat mengisi form tersebut dan jika sudah terisi semua, klik Submit.</p>
-                        <p>3. Kemudian anda bisa klik lihat pengumuman untuk mengetahui apakah anda sudah tervalidasi prodi dan pengurus.</p>
-                        <p>4. Jika anda telah tervalidasi prodi dan pengurus, anda akan mendapatkan surat rekomendasi dan SPTJM.</p>
-                        <p>5. Setelah anda melihat, mencetak dan nenandatangani SPTJM, anda dapat menguploadnya dan menunggu sampai pengurus memvalidasi.</p>
-                        <p>7. Setelah pengurus memvalidasi, anda dapat melihat dan mengunduh file SPTJM yang sudah di validasi pengurus.</p>
+                        <p>3. Kemudian anda bisa klik lihat pengumuman untuk mengetahui apakah anda sudah tervalidasi prodi dan koordinator.</p>
+                        <p>4. Jika anda telah tervalidasi prodi dan koordinator, anda akan mendapatkan surat rekomendasi dan SPTJM.</p>
+                        <p>5. Setelah anda melihat, mencetak dan nenandatangani SPTJM, anda dapat menguploadnya dan menunggu sampai koordinator memvalidasi.</p>
+                        <p>7. Setelah koordinator memvalidasi, anda dapat melihat dan mengunduh file SPTJM yang sudah di validasi koordinator.</p>
                         <br>
                         <h3>Tutorial Mendapatkan Surat Pengakuan SKS</h3>
                         <p>1. Silahkan klik Surat Pengakuan SKS pada menu Mahasiswa.</p>
                         <p>2. Setelah itu anda dapat mengisi bidang kampus merdeka dan mitra yang anda ikuti dan jika sudah terisi semua, klik Submit.</p>
-                        <p>3. Kemudian anda bisa klik lihat pengumuman untuk mengetahui apakah anda sudah tervalidasi pengurus.</p>
-                        <p>4. Jika anda telah tervalidasi pengurus, anda akan mendapatkan surat pengakuan SKS.</p>
-                        <p>5. Setelah anda melihat, mencetak dan nenandatangani surat pengakuan SKS, anda dapat menguploadnya dan menunggu sampai pengurus memvalidasi.</p>
-                        <p>7. Setelah pengurus memvalidasi, anda dapat melihat dan mengunduh file surat pengakuan SKS yang sudah di validasi pengurus.</p>
+                        <p>3. Kemudian anda bisa klik lihat pengumuman untuk mengetahui apakah anda sudah tervalidasi koordinator.</p>
+                        <p>4. Jika anda telah tervalidasi koordinator, anda akan mendapatkan surat pengakuan SKS.</p>
+                        <p>5. Setelah anda melihat, mencetak dan nenandatangani surat pengakuan SKS, anda dapat menguploadnya dan menunggu sampai koordinator memvalidasi.</p>
+                        <p>7. Setelah koordinator memvalidasi, anda dapat melihat dan mengunduh file surat pengakuan SKS yang sudah di validasi koordinator.</p>
                         <br>
                         <h3>Tutorial Input Nilai Total dan Upload Laporan Akhir</h3>
                         <p>1. Silahkan klik Input Nilai & Laporan Akhir pada menu Mahasiswa.</p>

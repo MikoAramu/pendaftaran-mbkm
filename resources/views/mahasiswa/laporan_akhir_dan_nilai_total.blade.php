@@ -24,7 +24,8 @@
                     <div class="card-header-title">Input Nilai Total dan Laporan Akhir</div>
                   </div>                
                   <div class="card-body collapse show" id="card1">                                                   
-                     <form method="POST" action="{{ route('simpan_laporan_akhir_dan_nilai_total') }}" 
+                    @if ($NilaiMahasiswaMbkm === null)
+                    <form method="POST" action="{{ route('simpan_laporan_akhir_dan_nilai_total') }}" 
                     enctype="multipart/form-data">
                       @csrf
                         
@@ -57,6 +58,9 @@
                                          
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    @else
+                      <p>Anda telah memasukkan nilai total dan laporan akhir</p>
+                  @endif
                 </div>                
               </div>
             </div>

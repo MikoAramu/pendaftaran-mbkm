@@ -10,7 +10,9 @@ class Mahasiswa extends Model
     'kelurahan', 'kecamatan', 'kota_kabupaten', 'provinsi', 'tempat_lahir', 'tanggal_lahir',
     'jurusan_id', 'fakultas_id', 'program_id', 'foto', 'skrip_nilai_studentsite', 'krs', 'ipk', 'semester_id',
     'status', 'angkatan', 'validasi_prodi', 'validasi_pengurus', 'upload_file_sr', 'upload_sptjm',
-    'validasi_sptjm_sr','bidang_mbkm','mitra_mbkm','upload_surat_pengakuan_sks'];
+    'validasi_sptjm_sr','bidang_mbkm','mitra_mbkm','upload_surat_pengakuan_sks', 'status_surat_sks_ttd_pengurus',
+    'upload_surat_sks_ttd_mahasiswa', 'upload_surat_sks_ttd_pengurus', 'status_sptjm_ttd_pengurus', 
+    'upload_sptjm_ttd_mahasiswa', 'upload_sptjm_ttd_pengurus'  ];
 
     protected $table = 'mahasiswa';
 

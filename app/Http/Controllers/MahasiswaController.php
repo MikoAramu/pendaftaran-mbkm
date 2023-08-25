@@ -245,10 +245,11 @@ class MahasiswaController extends Controller
                 // Proses pengunggahan file surat pengakuan SKS
                 $upload_sptjm = $request->file('upload_sptjm');
                 $upload_sptjmName = $mahasiswa->npm . '.' . $upload_sptjm->getClientOriginalExtension();
-                $upload_sptjmPath = $upload_sptjm->storeAs('public/sptjm_mhs_ttd', $upload_sptjmName);
+                $upload_sptjmPath = $upload_sptjm->storeAs('public/sptjm_ttd_mahasiswa', $upload_sptjmName);
                 
                 // Simpan path file surat pengakuan SKS ke database
-                $mahasiswa->upload_sptjm = $upload_sptjmPath;
+                $mahasiswa->upload_sptjm_ttd_mahasiswa = $upload_sptjmPath;
+                $mahasiswa->status_sptjm_ttd_pengurus = 'Menunggu Validasi';
             }
 
             $mahasiswa->save();
@@ -397,22 +398,24 @@ public function updateSuratPengakuanSKS(Request $request)
 {
     $request->validate([
         'id_mahasiswa' => 'required',
-        'upload_surat_pengakuan_sks' => 'required|file|mimes:pdf', // Validasi file PDF
+        'upload_surat_sks_ttd_mahasiswa' => 'required|file|mimes:pdf', // Validasi file PDF
     ]);
 
     $mahasiswa = Mahasiswa::find($request->input('id_mahasiswa'));
 
     if ($mahasiswa) {
-        if ($request->hasFile('upload_surat_pengakuan_sks')) {
+        if ($request->hasFile('upload_surat_sks_ttd_mahasiswa')) {
             // Proses pengunggahan file surat pengakuan SKS
-            $uploadSuratPengakuanSKS = $request->file('upload_surat_pengakuan_sks');
+            $uploadSuratPengakuanSKS = $request->file('upload_surat_sks_ttd_mahasiswa');
             $uploadSuratPengakuanSKSName = $mahasiswa->npm . '.' . $uploadSuratPengakuanSKS->getClientOriginalExtension();
-            $uploadSuratPengakuanSKSPath = $uploadSuratPengakuanSKS->storeAs('public/surat_pengakuan_sks', $uploadSuratPengakuanSKSName);
+            $uploadSuratPengakuanSKSPath = $uploadSuratPengakuanSKS->storeAs('public/surat_sks_ttd_mahasiswa', $uploadSuratPengakuanSKSName);
             
             // Simpan path file surat pengakuan SKS ke database
-            $mahasiswa->upload_surat_pengakuan_sks = $uploadSuratPengakuanSKSPath;
+            $mahasiswa->upload_surat_sks_ttd_mahasiswa = $uploadSuratPengakuanSKSPath;  
+            $mahasiswa->status_surat_sks_ttd_pengurus = 'Menunggu Validasi';
+          
         }
-
+        
         $mahasiswa->save();
 
         return redirect()->back()->with('success', 'Data berhasil diperbarui');

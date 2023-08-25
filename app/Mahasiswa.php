@@ -33,4 +33,15 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo(Semester::class, 'semester_id');
     }
+
+    public function nilaiMahasiswaPerkuliahan()
+    {
+        return $this->hasMany(NilaiMahasiswaPerkuliahan::class, 'mahasiswa_id');
+    }
+
+    public function nilaiMahasiswaMbkm()
+    {
+        return $this->hasOne(NilaiMahasiswaMbkm::class, 'mahasiswa_id');
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 Use App\MataKuliah;
 use App\User;
@@ -27,11 +28,12 @@ class NilaiMahasiswaPerkuliahanController extends Controller
 
     public function inputNilai(Request $request, $id)
     {
-        $dataUsers = User::where('role', 'mahasiswa')->get();
+        $dataUsers = User::where('role', 'mahasiswa')->with('mahasiswa')->get();
         $jurusan_id = $request->jurusan_id; // Mendapatkan jurusan_id dari request
         $matkul_id = $id; // Ambil nilai matkul_id dari parameter
         return view('pengurus.uploadnilai.inputnilai', compact('dataUsers', 'jurusan_id', 'matkul_id'));
     }
+
 
 
 
@@ -44,22 +46,22 @@ class NilaiMahasiswaPerkuliahanController extends Controller
     
         $matkulId = $request->matkul_id;
     
-        $nilaiData = []; // Menyimpan data nilai untuk disimpan nanti
-    
         foreach ($request->nilai as $mahasiswaId => $nilai) {
-            $nilaiData[] = [
-                'mahasiswa_id' => $mahasiswaId,
-                'matkul_id' => $matkulId,
-                'nilai_kuliah' => $nilai,
-            ];
+            $mahasiswa = Mahasiswa::find($mahasiswaId);
+        
+            if ($mahasiswa) {
+                $nilaiMahasiswa = new NilaiMahasiswaPerkuliahan();
+                $nilaiMahasiswa->mahasiswa_id = $mahasiswa->id;
+                $nilaiMahasiswa->matkul_id = $matkulId;
+                $nilaiMahasiswa->nilai_kuliah = $nilai;
+                $nilaiMahasiswa->save();
+            }
         }
     
-        if (NilaiMahasiswaPerkuliahan::insert($nilaiData)) {
-            return redirect()->route('inputNilai', ['id' => $matkulId])->with('success', 'Nilai berhasil disimpan');
-        } else {
-            return redirect()->route('inputNilai', ['id' => $matkulId])->with('error', 'Gagal menyimpan nilai');
-        }
-    }    
+        return redirect()->route('inputNilai', ['id' => $matkulId])->with('success', 'Nilai berhasil disimpan');
+    }
+
+
 
      public function editNilai()
     {
@@ -78,32 +80,62 @@ class NilaiMahasiswaPerkuliahanController extends Controller
         return view('pengurus.uploadnilai.detail', compact('matkul', 'nilaiMahasiswa'));
     }
 
-   public function indexKonversi()
+  public function indexKonversi()
     {
-        $dataMatakuliah = Matakuliah::all(); // Mengambil semua data mata kuliah
-        $dataUsers = User::with('nilaiMahasiswaPerkuliahan')->get(); // Mengambil semua data mahasiswa beserta nilai perkuliahan
-
-        return view('pengurus.uploadnilai.indexkonversi', compact('dataMatakuliah', 'dataUsers'));
+        $dataMatakuliah = MataKuliah::all(); // Tambahkan ini untuk mengambil data mata kuliah
+        $dataUsers = User::where('role', 'mahasiswa')->with('mahasiswa', 'nilaiMahasiswaPerkuliahan', 'nilaiMahasiswaMbkm')->get();
+        
+        $nilaiData = [];
+    
+        foreach ($dataUsers as $user) {
+            $nilaiMahasiswa = [];
+        
+            foreach ($dataMatakuliah as $matakuliah) {
+                $nilaiPerkuliahan = $user->nilaiMahasiswaPerkuliahan->where('matkul_id', $matakuliah->id)->first();
+                $nilaiKuliah = $nilaiPerkuliahan ? $nilaiPerkuliahan->nilai_kuliah : 0;
+                $nilaiMbkm = $user->nilaiMahasiswaMbkm->nilai_mbkm ?? 0;
+                $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);
+            
+                $nilaiMahasiswa[] = [
+                    'nilaiKuliah' => $nilaiKuliah,
+                    'nilaiMbkm' => $nilaiMbkm,
+                    'nilaiFinal' => $nilaiFinal,
+                ];
+            }
+        
+            $nilaiData[] = [
+                'mahasiswa' => $user->mahasiswa,
+                'nilaiMahasiswa' => $nilaiMahasiswa,
+            ];
+        }
+    
+        return view('pengurus.uploadnilai.indexkonversi', compact('nilaiData', 'dataMatakuliah'));
     }
 
     public function nilaiKonversi(Request $request)
     {
-        $matkulId = $request->matkul_id;
-    
+        $dataMatakuliah = MataKuliah::all();
         $dataUsers = User::where('role', 'mahasiswa')->get();
-    
+
         foreach ($dataUsers as $user) {
-            $nilaiPerkuliahan = $user->nilaiMahasiswaPerkuliahan->where('matkul_id', $matkulId)->first();
-            if ($nilaiPerkuliahan) {
-                $nilaiKuliah = $nilaiPerkuliahan->nilai_kuliah;
-                $nilaiMbkm = $user->nilai_mbkm;
-                $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);
-            
-                $nilaiPerkuliahan->nilai_final_kuliah = $nilaiFinal;
-                $nilaiPerkuliahan->save();
+            $mahasiswa = $user->mahasiswa;
+
+            if ($mahasiswa && $mahasiswa->nilaiMahasiswaMbkm) {
+                foreach ($dataMatakuliah as $matakuliah) {
+                    $nilaiPerkuliahan = $mahasiswa->nilaiMahasiswaPerkuliahan->where('matkul_id', $matakuliah->id)->first();
+                    if ($nilaiPerkuliahan) {
+                        $nilaiKuliah = $nilaiPerkuliahan->nilai_kuliah;
+                        $nilaiMbkm = $mahasiswa->nilaiMahasiswaMbkm->nilai_mbkm;
+                        $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);
+
+                        $nilaiPerkuliahan->nilai_final_kuliah = $nilaiFinal;
+                        $nilaiPerkuliahan->nilai_mahasiswa_mbkm_id = $mahasiswa->nilaiMahasiswaMbkm->id;
+                        $nilaiPerkuliahan->save();
+                    }
+                }
             }
         }
-    
+
         return redirect()->route('indexKonversi')->with('success', 'Konversi nilai berhasil.');
     }
    

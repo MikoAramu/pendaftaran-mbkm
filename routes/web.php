@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\NilaiMahasiswaPerkuliahanController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -37,7 +39,7 @@ Route::prefix('pengurus')->middleware('role:pengurus')->group(function() {
     Route::get('/edit-nilai', 'NilaiMahasiswaPerkuliahanController@editNilai')->name('editNilai');
     Route::get('nilai/detail/{id}', 'NilaiMahasiswaPerkuliahanController@detailNilai')->name('detailNilai');
     Route::get('/konversi-nilai', 'NilaiMahasiswaPerkuliahanController@indexKonversi')->name('indexKonversi');
-    Route::post('/konversi-nilai', 'NilaiMahasiswaPerkuliahanController@konversiNilai')->name('konversiNilai');
+    Route::post('/nilai-konversi', 'NilaiMahasiswaPerkuliahanController@nilaiKonversi')->name('nilaiKonversi');
     //Route::get('/upload-nilai-perkuliahan/edit/{id}', 'PengurusController@editNilai')->name('editNilai');
     //Route::get('/upload-nilai-perkuliahan', 'PengurusController@saveNilai')->name('saveNilai');
 });

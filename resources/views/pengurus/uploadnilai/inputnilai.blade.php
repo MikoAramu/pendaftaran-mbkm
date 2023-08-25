@@ -12,7 +12,7 @@
             </nav>
 
             <div class="pb-3">
-                <h1>Algoritma Pemrograman 2 </h1>
+                <h1>{{ \App\MataKuliah::find($matkul_id)->nama_matkul }}</h1>
                 <p>Silahkan masukkan nilai mahasiswa</p>
             </div>
 

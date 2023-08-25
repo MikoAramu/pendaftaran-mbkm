@@ -25,4 +25,9 @@ class NilaiMahasiswaPerkuliahan extends Model
     return $this->belongsTo(MataKuliah::class, 'matkul_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

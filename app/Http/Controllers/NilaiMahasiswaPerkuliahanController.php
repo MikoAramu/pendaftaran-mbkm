@@ -78,33 +78,32 @@ class NilaiMahasiswaPerkuliahanController extends Controller
         return view('pengurus.uploadnilai.detail', compact('matkul', 'nilaiMahasiswa'));
     }
 
-    public function indexKonversi()
+   public function indexKonversi()
     {
-        $dataMatakuliah = MataKuliah::all();
-        $dataUsers = User::where('role', 'mahasiswa')->get();
+        $dataMatakuliah = Matakuliah::all(); // Mengambil semua data mata kuliah
+        $dataUsers = User::with('nilaiMahasiswaPerkuliahan')->get(); // Mengambil semua data mahasiswa beserta nilai perkuliahan
 
         return view('pengurus.uploadnilai.indexkonversi', compact('dataMatakuliah', 'dataUsers'));
     }
 
-    public function konversiNilai(Request $request)
+    public function nilaiKonversi(Request $request)
     {
         $matkulId = $request->matkul_id;
-
+    
         $dataUsers = User::where('role', 'mahasiswa')->get();
-
+    
         foreach ($dataUsers as $user) {
-            foreach ($user->nilaiMahasiswaPerkuliahan as $nilaiPerkuliahan) {
-                if ($nilaiPerkuliahan->matkul_id == $matkulId) {
-                    $nilaiKuliah = $nilaiPerkuliahan->nilai_kuliah;
-                    $nilaiMbkm = $user->nilai_mbkm;
-                    $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);
-
-                    $nilaiPerkuliahan->nilai_final_kuliah = $nilaiFinal;
-                    $nilaiPerkuliahan->save();
-                }
+            $nilaiPerkuliahan = $user->nilaiMahasiswaPerkuliahan->where('matkul_id', $matkulId)->first();
+            if ($nilaiPerkuliahan) {
+                $nilaiKuliah = $nilaiPerkuliahan->nilai_kuliah;
+                $nilaiMbkm = $user->nilai_mbkm;
+                $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);
+            
+                $nilaiPerkuliahan->nilai_final_kuliah = $nilaiFinal;
+                $nilaiPerkuliahan->save();
             }
         }
-
+    
         return redirect()->route('indexKonversi')->with('success', 'Konversi nilai berhasil.');
     }
    

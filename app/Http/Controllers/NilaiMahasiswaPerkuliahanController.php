@@ -101,8 +101,11 @@ class NilaiMahasiswaPerkuliahanController extends Controller
         $nilaiMahasiswa = NilaiMahasiswaPerkuliahan::with('mahasiswa')
             ->where('matkul_id', $id)
             ->get();
+
+        $nilai_mbkm = NilaiMahasiswaMbkm::with('mahasiswa')->get();
+        //d($nilai_mbkm);
     
-        return view('pengurus.uploadnilai.detail', compact('matkul', 'nilaiMahasiswa'));
+        return view('pengurus.uploadnilai.detail', compact('matkul', 'nilaiMahasiswa', 'nilai_mbkm'));
     }
 
   public function indexKonversi()
@@ -116,7 +119,10 @@ class NilaiMahasiswaPerkuliahanController extends Controller
             $nilaiMahasiswa = [];
         
             foreach ($dataMatakuliah as $matakuliah) {
-                $nilaiPerkuliahan = $user->nilaiMahasiswaPerkuliahan->where('matkul_id', $matakuliah->id)->first();
+                $mhs = Mahasiswa::where('user_id', $user->id)->first();
+                // dd("get data", $mhs);
+                $nilaiPerkuliahan = NilaiMahasiswaPerkuliahan::where('mahasiswa_id', $mhs->id)->where('matkul_id', $matakuliah->id)->first();
+                // dd($nilaiPerkuliahan);
                 $nilaiKuliah = $nilaiPerkuliahan ? $nilaiPerkuliahan->nilai_kuliah : 0;
                 $nilaiMbkm = $user->nilaiMahasiswaMbkm->nilai_mbkm ?? 0;
                 $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);

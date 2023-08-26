@@ -38,11 +38,11 @@
                         <th>Nilai Perkuliahan</th>
                         <th>Nilai MBKM</th>
                     </tr>
-                    @foreach ($nilaiMahasiswa as $nilai)
+                    @foreach ($nilaiMahasiswa as $index => $nilai)
                         <tr>
                             <td>{{ $nilai->mahasiswa->nama }}</td>
                             <td>{{ $nilai->nilai_kuliah ?? 'Nilai Tidak Tersedia'}}</td>
-                            <td>{{ $nilai->mahasiswa->nilai_mbkm ?? 'Nilai Tidak Tersedia' }}</td>
+                            <td>{{ $nilai_mbkm[$index]['nilai_mbkm'] ?? 'Nilai Tidak Tersedia' }}</td>
                         </tr>
                     @endforeach
                 </table>

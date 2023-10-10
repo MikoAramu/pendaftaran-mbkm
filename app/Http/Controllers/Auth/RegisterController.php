@@ -12,7 +12,7 @@ class RegisterController extends Controller
 {
     use RegistersUsers;
 
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/mahasiswa/dashboard-mahasiswa';
 
     public function __construct()
     {
@@ -42,11 +42,6 @@ class RegisterController extends Controller
      * 
      * @return [type]
      */
-    // public function check(Request $request)
-    // {
-    //     return User::where('email', $request->email)->count() > 0 ? 'Unavailable' :"Available" ;
-    // }
-
     
 }
 

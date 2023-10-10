@@ -86,7 +86,7 @@
                             @enderror
                         </div>
 
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label class="form-label" for="program">Program MBKM</label>
                             <select name="program_id" class="form-control @error('program_id') is-invalid @enderror" id="program">
                                 <option value="" disabled selected>Pilih Program MBKM</option>
@@ -99,7 +99,7 @@
                             @error('program_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div> --}}
+                        </div>
 
                         <div class="form-group">
                             <label class="form-label" for="nik">NIK</label>
@@ -215,7 +215,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="skrip_nilai">Skrip Nilai</label>
+                            <label for="skrip_nilai">Transkrip Nilai</label>
                             <input type="file" name="skrip_nilai_studentsite" accept=".pdf"
                                 class="form-control-file @error('skrip_nilai_studentsite') is-invalid @enderror"
                                 id="skrip_nilai">
@@ -225,7 +225,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="krs">KRS</label>
+                            <label for="krs">KRS Aktif</label>
                             <input type="file" name="krs" accept=".pdf"
                                 class="form-control-file @error('krs') is-invalid @enderror"
                                 id="krs">

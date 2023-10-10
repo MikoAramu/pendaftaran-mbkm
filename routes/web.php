@@ -45,7 +45,9 @@ Route::prefix('mahasiswa')->middleware('role:mahasiswa')->group(function() {
     Route::get('/pengumuman-pendaftaran', 'MahasiswaController@pengumumanPendaftaran')->name('pengumuman_pendaftaran');
     Route::get('/cetaksuratrekomendasi', 'MahasiswaController@cetaksuratrekomendasi')->name('cetaksuratrekomendasi');
     Route::get('/cetaksptjm', 'MahasiswaController@cetaksptjm')->name('cetaksptjm');
-    Route::get('/dashboard-mahasiswa', 'MahasiswaController@dashboard')->name('dashboard_mahasiswa');
+    Route::get('/cetaksuratsks', 'MahasiswaController@cetaksuratsks')->name('cetaksuratsks');
+    Route::get('/dashboard-mahasiswa', 'MahasiswaController@dashboardMahasiswa')->name('dashboard_mahasiswa');
+    Route::get('/petunjuk-penggunaan', 'MahasiswaController@petunjukPenggunaan')->name('petunjuk_penggunaan');
     Route::post('/update-sptjm', 'MahasiswaController@updateSPTJM')->name('updateSPTJM');
     Route::get('/laporan-akhir-dan-nilai-total', 'NilaiMahasiswaMbkmController@inputLaporanAkhirDanNilaiTotal')->name('laporan_akhir_dan_nilai_total');
     Route::post('/simpan-laporan-akhir-dan-nilai-total', 'NilaiMahasiswaMbkmController@simpanLaporanAkhirdanNilaiTotal')->name('simpan_laporan_akhir_dan_nilai_total');

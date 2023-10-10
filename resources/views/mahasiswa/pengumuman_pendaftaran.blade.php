@@ -27,16 +27,16 @@
                     <div class="card-body collapse show" id="card1">
                         @if ($mahasiswa)
                             @if ($mahasiswa->status == 'Menunggu Validasi')
-                                <p><h3>Menunggu Validasi Prodi dan Pengurus</h3></p>
+                                <p><h3>Menunggu Validasi Prodi dan Koordinator</h3></p>
                             @elseif ($mahasiswa->status == 'Tidak Lolos Validasi')
                                 <p><h3>Maaf, Anda tidak lolos validasi</h3></p>
                             @elseif ($mahasiswa->status == 'Anda Tervalidasi Prodi')
-                                <p><h3>Selamat anda sudah tervalidasi Prodi tetapi anda masih harus menunggu validasi dari Pengurus</h3><br>
-                                Anda dapat melihat dan mencetak surat Rekomendasi <br> <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Cetak Surat Rekomendasi</a> </p>
+                                <p><h3>Selamat anda sudah tervalidasi Prodi tetapi anda masih harus menunggu validasi dari Koordinator</h3><br>
+                                Anda dapat melihat dan mencetak surat Rekomendasi <br> <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Lihat Surat Rekomendasi</a> </p>
                             @elseif ($mahasiswa->status == 'Anda Tervalidasi Prodi dan Pengurus')
-                                <p><h3>Selamat Anda telah tervalidasi oleh Prodi dan Pengurus</h3></p>
-                                Anda dapat mendownload surat Rekomendasi <br> <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Cetak Surat Rekomendasi</a><br><br>
-                                Anda dapat mendownload SPTJM <br> <a href="{{ route('cetaksptjm') }}" class="btn btn-primary"> Cetak SPTJM</a></p><br><br>
+                                <p><h3>Selamat Anda telah tervalidasi oleh Prodi dan Koordinator</h3></p>
+                                Anda dapat melihat dan mencetak surat Rekomendasi <br> <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Lihat Surat Rekomendasi</a><br><br>
+                                Anda dapat melihat dan mencetak SPTJM <br> <a href="{{ route('cetaksptjm') }}" class="btn btn-primary"> Lihat SPTJM</a></p><br><br>
 
                                
                                 @if ($mahasiswa)
@@ -46,7 +46,7 @@
             <input type="hidden" name="id_mahasiswa" value="{{ $mahasiswa->id }}">
             
             <div class="form-group">
-                <label for="upload_sptjm">Unggah File PDF Surat Pengakuan SKS:</label>
+                <label for="upload_sptjm">Unggah File PDF SPTJM:</label>
                 <input type="file" name="upload_sptjm" accept=".pdf" class="form-control-file @error('upload_sptjm') is-invalid @enderror" id="upload_sptjm">
                 @error('upload_sptjm')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -65,12 +65,12 @@
                         @endif
                         @if ($mahasiswa)
                                 @if ($mahasiswa->status_sptjm_ttd_pengurus == 'Menunggu Validasi')
-                                <p><h3>Menunggu validasi untuk mendapatkan Surat Pengakuan SKS </h3></p>
+                                <p><h3>Menunggu validasi untuk mendapatkan SPTJM </h3></p>
                                 @elseif ($mahasiswa->status_sptjm_ttd_pengurus == 'Tidak Valid')
                                 <p><h3>Maaf, Anda tidak lolos validasi</h3></p>
                                 @elseif ($mahasiswa->status_sptjm_ttd_pengurus == 'Sudah Valid')
-                                <p><br><h3>Silahkan cetak Surat Pengakuan SKS yang sudah ditanda tangan pengurus</h3></p>
-                                <a href="{{ Storage::url($mahasiswa->upload_surat_sks_ttd_mahasiswa) }}" target="_blank" class="btn btn-primary">Cetak surat pengakuan SKS</a>
+                                <p><br><h3>Silahkan lihat dan cetak SPTJM yang sudah ditandatangan koordinator</h3></p>
+                                <a href="{{ Storage::url($mahasiswa->upload_sptjm_ttd_mahasiswa) }}" target="_blank" class="btn btn-primary">Lihat SPTJM yang sudah ditandatangan koordinator</a>
 
                                  @endif                        
                         @endif

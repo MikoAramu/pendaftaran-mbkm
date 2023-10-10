@@ -1,6 +1,9 @@
 <div class="adminx-sidebar expand-hover push">
         <ul class="sidebar-nav">
-          <li class="sidebar-nav-item">
+          
+  @if($authenticateUser->role == 'pengurus')
+
+<li class="sidebar-nav-item">
             <a href="{{route('home')}}" class="sidebar-nav-link">
               <span class="sidebar-nav-icon">
                 <i data-feather="home"></i>
@@ -13,7 +16,7 @@
               </span>
             </a>
           </li>
-  @if($authenticateUser->role == 'pengurus')
+
           <li class="sidebar-nav-item">
             <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#example" aria-expanded="false" aria-controls="example">
               <span class="sidebar-nav-icon">
@@ -74,6 +77,20 @@
             </ul>
           </li>
   @elseif($authenticateUser->role == 'prodi')
+
+  <li class="sidebar-nav-item">
+            <a href="{{route('home')}}" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">
+                <i data-feather="home"></i>
+              </span>
+              <span class="sidebar-nav-name">
+                Dashboard
+              </span>
+              <span class="sidebar-nav-end">
+
+              </span>
+            </a>
+          </li>
 
           <li class="sidebar-nav-item">
             <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navTables" aria-expanded="false" aria-controls="navTables">
@@ -145,10 +162,19 @@
 
                 <a href="{{route('dashboard_mahasiswa')}}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
-                    D
+                    DM
                   </span>
                   <span class="sidebar-nav-name">
-                    Dashboard
+                    Dashboard Mahasiswa
+                  </span>
+                </a>
+
+                <a href="{{route('petunjuk_penggunaan')}}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    PP
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Petunjuk Penggunaan
                   </span>
                 </a>
 

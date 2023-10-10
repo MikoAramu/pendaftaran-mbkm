@@ -12,7 +12,7 @@
             </nav>
 
             <div class="pb-3">
-                <h1>Dashboard Mahasiswa</h1>
+                <h1>Petuntuk Penggunaan</h1>
                 <dd>Semangat! dan jangan lupa untuk selalu berusaha dan berdoa</dd>
             </div>
             <div >

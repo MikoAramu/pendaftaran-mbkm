@@ -25,7 +25,7 @@
                   </div>                                    
                   <div class="card-body collapse show" id="card1"> 
                                 <p><h3>Anda dapat melihat dan mencetak surat pengakuan SKS</h3>
-                                <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Cetak Surat Pengakuan SKS</a> </p>
+                                <a href="{{ route('cetaksuratrekomendasi') }}" class="btn btn-primary"> Lihat Surat Pengakuan SKS</a> </p>
                                   
 
                                 @if ($mahasiswa)
@@ -52,8 +52,8 @@
                                 @elseif ($mahasiswa->status_surat_sks_ttd_pengurus === 'Tidak Valid')
                                 <p><h3>Maaf, Anda tidak lolos validasi</h3></p>
                                 @elseif ($mahasiswa->status_surat_sks_ttd_pengurus === 'Sudah Valid')
-                                <p><br><h3>Silahkan cetak Surat Pengakuan SKS yang sudah ditanda tangan pengurus</h3></p>
-                                <a href="{{ Storage::url($mahasiswa->upload_surat_sks_ttd_mahasiswa) }}" target="_blank" class="btn btn-primary">Cetak surat pengakuan SKS</a>
+                                <p><br><h3>Silahkan cetak Surat Pengakuan SKS yang sudah ditandatangan koordinator</h3></p>
+                                <a href="{{ Storage::url($mahasiswa->upload_surat_sks_ttd_mahasiswa) }}" target="_blank" class="btn btn-primary">Lihat surat pengakuan SKS  yang sudah ditandatangan koordinator</a>
 
                                  @endif                        
                         @endif                   

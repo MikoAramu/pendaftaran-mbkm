@@ -47,7 +47,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="form-label" for="program">Program MBKM</label>
                             <select name="program_id" class="form-control @error('program_id') is-invalid @enderror" id="program">
                                 <option value="" disabled selected>Pilih Program MBKM</option>
@@ -60,7 +60,7 @@
                             @error('program_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> --}}
 
                         <button type="submit" class="btn btn-primary">Submit</button>
 

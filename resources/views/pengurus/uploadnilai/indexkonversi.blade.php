@@ -4,33 +4,46 @@
 <div class="adminx-content">
     <div class="adminx-main-content">
         <div class="container-fluid">
-            <!-- Bagian lain dari tampilan -->
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb adminx-page-breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Nilai Perkuliahan</li>
+                </ol>
+            </nav>
+
+            <div class="pb-3">
+                <h1>Konversi Nilai Mahasiswa </h1>
+                <p>Silahkan masukkan nilai mahasiswa</p>
+            </div>
 
             <form method="POST" action="{{ route('nilaiKonversi') }}">
                 @csrf
-                <table class="table mt-3">
+                <table class="table mt-3" border="1">
                     <thead>
+                    <tr>
+                        <th rowspan="2" style="text-align: center;">NAMA MAHASISWA</th>
+                        @foreach ($dataMatakuliah as $matakuliah)
+                            <th colspan="3" style="text-align: center;">{{ $matakuliah->nama_matkul }}</th>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        @foreach ($dataMatakuliah as $matakuliah)
+                            <th style="text-align: center;">Nilai Kuliah</th>
+                            <th style="text-align: center;">Nilai MBKM</th>
+                            <th style="text-align: center;">Nilai Akhir</th>
+                        @endforeach
+                    </tr>
+                    </thead>
+                    @foreach ($nilaiData as $data)
                         <tr>
-                            <th>Nama Mahasiswa</th>
-                            @foreach ($dataMatakuliah as $matakuliah)
-                                <th>{{ $matakuliah->nama_matkul }}</th>
+                            <td >{{ $data['mahasiswa']->nama }}</td>
+                            @foreach ($data['nilaiMahasiswa'] as $nilai)
+                                <td style="text-align: center;">{{ $nilai['nilaiKuliah'] }}</td>
+                                <td style="text-align: center;">{{ $nilai['nilaiMbkm'] }}</td>
+                                <td style="text-align: center;">{{ $nilai['nilaiFinal'] }}</td>
                             @endforeach
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($nilaiData as $data)
-                            <tr>
-                                <td>{{ $data['mahasiswa']->nama }}</td>
-                                @foreach ($data['nilaiMahasiswa'] as $nilai)
-                                    <td>
-                                        <div>Nilai Kuliah: {{ $nilai['nilaiKuliah'] }}</div>
-                                        <div>Nilai MBKM: {{ $nilai['nilaiMbkm'] }}</div>
-                                        <div>Nilai Akhir: {{ $nilai['nilaiFinal'] }}</div>
-                                    </td>
-                                @endforeach
-                            </tr>
-                        @endforeach
-                    </tbody>
+                    @endforeach
                 </table>
                 <button type="submit" class="btn btn-primary">Konversi Nilai</button>
             </form>

@@ -48,6 +48,7 @@
                           </th>
                           <th scope="col">Id</th>
                           <th scope="col">Nama Program</th>
+                          <th scope="col">Status</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -62,6 +63,10 @@
                           </th>
                           <td>{{$data->id}}</td>
                           <td>{{$data->nama_program}}</td>
+                          <td>
+                            <a href="#" class="btn btn-sm btn-success">Aktif</a>
+                            <a href="#" class="btn btn-sm btn-warning">Non-Aktif</a>
+                          </td>
                           <td>
                             <a href="{{ route('editProgram', $data->id) }}" class="btn btn-sm btn-primary">Ubah</a>
                             <a href="{{ route('deleteProgram', $data->id) }}" class="btn btn-sm btn-danger">Hapus</button>

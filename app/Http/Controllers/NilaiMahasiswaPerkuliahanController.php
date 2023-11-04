@@ -21,10 +21,14 @@ class NilaiMahasiswaPerkuliahanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexNilai()
+    public function indexNilai(Request $request)
     {
-        $dataMatakuliah = MataKuliah::with(['jurusan','semesters'])->get();
-        return view('pengurus.uploadnilai.index', ['dataMatakuliah' => $dataMatakuliah]);
+        $jurusans = Jurusan::all();
+        $dataMatakuliah = MataKuliah::with(['jurusan','semesters'])->when($request->jurusan_id, function ($query) use ($request) {
+            return $query->where('jurusan_id', $request->jurusan_id);
+        })->get();
+    
+        return view('pengurus.uploadnilai.index', compact('dataMatakuliah', 'jurusans'));
     }
 
     public function inputNilai(Request $request, $id)

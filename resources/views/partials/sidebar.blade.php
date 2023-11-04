@@ -20,7 +20,7 @@
                 <i data-feather="pie-chart"></i>
               </span>
               <span class="sidebar-nav-name">
-                Pengurus
+                Koordinator
               </span>
               <span class="sidebar-nav-end">
                 <i data-feather="chevron-right" class="nav-collapse-icon"></i>

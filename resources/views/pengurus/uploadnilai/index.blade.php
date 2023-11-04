@@ -35,6 +35,18 @@
                 <div class="card mb-grid">
                   <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="card-header-title">Table</div>
+
+                    <!-- Filter form -->
+                  <form method="GET" action="{{ route('indexNilai') }}">
+                      <select name="jurusan_id" id="jurusan_id">
+                          @foreach($jurusans as $jurusan)
+                              <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>
+                          @endforeach
+                      </select>
+                      <button type="submit">Filter</button>
+                  </form>
+                  <!-- End filter form -->
+                
                   </div>
                   <div class="table-responsive-md">
                     <table class="table table-actions table-striped table-hover mb-0">

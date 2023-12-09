@@ -81,7 +81,8 @@
                           <td>
                             <a href="{{ route('inputNilai', ['id' => $mk->id]) }}" class="btn btn-sm btn-primary">
                               <i class="oi oi-folder"></i>&nbsp; Masukkan Nilai</a>
-                            <a href="{{ route('editNilai', ['id' => $mk->id]) }}" class="btn btn-sm btn-warning">Ubah</a> 
+                            <a href="{{ route('editNilai', ['id' => $mk->id]) }}" class="btn btn-sm btn-warning">Ubah</a>
+                            <a href="{{ route('konversiNilaiMatkul', ['id' => $mk->id]) }}" class="btn btn-sm btn-success">Konversi Nilai</a>
                             <a href="{{ route('detailNilai', ['id' => $mk->id]) }}" class="btn btn-sm btn-secondary">Detail Nilai</a>
                           </td>
                         </tr>

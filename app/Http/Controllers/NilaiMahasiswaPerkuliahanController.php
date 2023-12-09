@@ -112,6 +112,52 @@ class NilaiMahasiswaPerkuliahanController extends Controller
         return view('pengurus.uploadnilai.detail', compact('matkul', 'nilaiMahasiswa', 'nilai_mbkm'));
     }
 
+   public function konversiNilaiMatkul($matkulId)
+    {
+        // Ambil data mata kuliah berdasarkan ID
+        $matkul = MataKuliah::findOrFail($matkulId);
+
+        // Ambil semua mahasiswa
+        $dataUsers = User::where('role', 'mahasiswa')->get();
+
+        // Inisialisasi array untuk menyimpan nilai mahasiswa per mata kuliah
+        $nilaiMahasiswa = [];
+
+        // Iterasi untuk setiap mahasiswa
+        foreach ($dataUsers as $user) {
+            $mhs = Mahasiswa::where('user_id', $user->id)->first();
+
+            // Pastikan bahwa user memiliki relasi dengan mahasiswa
+            if ($mhs) {
+                // Ambil nilai perkuliahan untuk mata kuliah tertentu
+                $nilaiPerkuliahan = NilaiMahasiswaPerkuliahan::where('mahasiswa_id', $mhs->id)->where('matkul_id', $matkulId)->first();
+
+                // Hitung nilai final (maksimum dari nilai perkuliahan dan nilai MBKM)
+                $nilaiKuliah = $nilaiPerkuliahan ? $nilaiPerkuliahan->nilai_kuliah : 0;
+
+                // Ambil nilai MBKM dari tabel nilai_mahasiswa_mbkm untuk mahasiswa ini
+                $nilaiMbkm = NilaiMahasiswaMbkm::where('mahasiswa_id', $mhs->id)->first();
+                if ($nilaiMbkm) {
+                    $nilaiMbkm = $nilaiMbkm->nilai_mbkm;
+                } else {
+                    $nilaiMbkm = 0;
+                }
+
+                $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);
+
+                // Simpan data nilai mahasiswa per mata kuliah ke dalam array
+                $nilaiMahasiswa[] = [
+                    'mahasiswa' => $user->mahasiswa,
+                    'nilaiKuliah' => $nilaiKuliah,
+                    'nilaiMbkm' => $nilaiMbkm,
+                    'nilaiFinal' => $nilaiFinal,
+                ];
+            }
+        }
+
+        return view('pengurus.uploadnilai.konversinilaimatkul', compact('matkul', 'nilaiMahasiswa'));
+    }
+
   public function indexKonversi()
     {
         $dataMatakuliah = MataKuliah::all(); // Tambahkan ini untuk mengambil data mata kuliah

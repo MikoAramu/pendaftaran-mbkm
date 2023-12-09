@@ -16,4 +16,9 @@ class NilaiMahasiswaMbkm extends Model
     {
         return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id');
     }
+
+    public function matkul()
+    {
+        return $this->belongsTo(MataKuliah::class, 'matkul_id');
+    }
 }

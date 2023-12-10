@@ -160,9 +160,9 @@ class NilaiMahasiswaPerkuliahanController extends Controller
 
   public function indexKonversi()
     {
-        $dataMatakuliah = MataKuliah::all(); // Tambahkan ini untuk mengambil data mata kuliah
+        $dataMatakuliah = MataKuliah::all();
         $dataUsers = User::where('role', 'mahasiswa')->with('mahasiswa', 'nilaiMahasiswaPerkuliahan', 'nilaiMahasiswaMbkm')->get();
-        
+    
         $nilaiData = [];
     
         foreach ($dataUsers as $user) {
@@ -170,18 +170,24 @@ class NilaiMahasiswaPerkuliahanController extends Controller
         
             foreach ($dataMatakuliah as $matakuliah) {
                 $mhs = Mahasiswa::where('user_id', $user->id)->first();
-                // dd("get data", $mhs);
-                $nilaiPerkuliahan = NilaiMahasiswaPerkuliahan::where('mahasiswa_id', $mhs->id)->where('matkul_id', $matakuliah->id)->first();
-                // dd($nilaiPerkuliahan);
-                $nilaiKuliah = $nilaiPerkuliahan ? $nilaiPerkuliahan->nilai_kuliah : 0;
-                $nilaiMbkm = $user->nilaiMahasiswaMbkm->nilai_mbkm ?? 0;
-                $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);
             
-                $nilaiMahasiswa[] = [
-                    'nilaiKuliah' => $nilaiKuliah,
-                    'nilaiMbkm' => $nilaiMbkm,
-                    'nilaiFinal' => $nilaiFinal,
-                ];
+                // Pastikan bahwa pengguna memiliki hubungan dengan Mahasiswa
+                if ($mhs) {
+                    $nilaiPerkuliahan = NilaiMahasiswaPerkuliahan::where('mahasiswa_id', $mhs->id)->where('matkul_id', $matakuliah->id)->first();
+                
+                    $nilaiKuliah = $nilaiPerkuliahan ? $nilaiPerkuliahan->nilai_kuliah : 0;
+                
+                    // Ambil nilaiMbkm untuk Mahasiswa ini
+                    $nilaiMbkm = $mhs->nilaiMahasiswaMbkm ? $mhs->nilaiMahasiswaMbkm->nilai_mbkm : 0;
+                
+                    $nilaiFinal = max($nilaiKuliah, $nilaiMbkm);
+                
+                    $nilaiMahasiswa[] = [
+                        'nilaiKuliah' => $nilaiKuliah,
+                        'nilaiMbkm' => $nilaiMbkm,
+                        'nilaiFinal' => $nilaiFinal,
+                    ];
+                }
             }
         
             $nilaiData[] = [
